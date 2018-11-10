@@ -50,5 +50,21 @@ namespace ProyectoTopicos.Tests.Controllers
 			// Assert
 			Assert.IsNotNull(result);
 		}
+
+		[TestMethod]
+		public void ConsultarArticulosPorCategoria()
+		{
+			// prepare el escenario
+			var categoria = "1";
+			var especificacion = new LogicaNegocio.Logica.Especificacion.Articulo();
+			var elResultadoEsperado = 1;
+
+			// ejecute el método deseado
+			var elResultadoReal = especificacion.ListarPorCategoria(categoria);
+
+			// verifique
+			Assert.IsNotNull(elResultadoReal);
+			Assert.IsTrue(elResultadoReal.Count == elResultadoEsperado);
+		}
 	}
 }

@@ -35,6 +35,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.VisualStudio.TestPlatform.TestFramework">
       <HintPath>..\packages\MSTest.TestFramework.1.2.0\lib\net45\Microsoft.VisualStudio.TestPlatform.TestFramework.dll</HintPath>
@@ -91,6 +97,7 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\HomeControllerTest.cs" />
+    <Compile Include="Controllers\UnitTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App.config" />
@@ -99,6 +106,14 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ProyectoTopicos.LogicaNegocio\ProyectoTopicos.LogicaNegocio.csproj">
+      <Project>{eabf83a1-f22a-467f-b223-25d03d01de4b}</Project>
+      <Name>ProyectoTopicos.LogicaNegocio</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ProyectoTopicos.Model\ProyectoTopicos.Model.csproj">
+      <Project>{44cff577-0933-4ff3-a708-84654097566e}</Project>
+      <Name>ProyectoTopicos.Model</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ProyectoTopicos\ProyectoTopicos.csproj">
       <Project>{20C13D0A-3FCE-4536-8688-8535F12C9784}</Project>
       <Name>ProyectoTopicos</Name>
