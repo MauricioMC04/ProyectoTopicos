@@ -12,29 +12,18 @@ namespace ProyectoTopicos.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class Articulos
+    public partial class Perfiles
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Articulos()
+        public Perfiles()
         {
             this.Usuarios = new HashSet<Usuarios>();
-            this.RegistroDevoluciones = new HashSet<RegistroDevoluciones1>();
         }
     
-        public string codigoArticulo { get; set; }
-        public string nombre { get; set; }
-        public System.DateTime fechaIngreso { get; set; }
-        public string estado { get; set; }
-        public string categoria { get; set; }
-        public string subCategoria { get; set; }
-        public Nullable<System.DateTime> fechaEntrega { get; set; }
-        public string descripcion { get; set; }
+        public string codigoPerfil { get; set; }
+        public string perfil { get; set; }
     
-        public virtual CategoriasArticulos CategoriasArticulos { get; set; }
-        public virtual SubCategoriasArticulos SubCategoriasArticulos { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Usuarios> Usuarios { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RegistroDevoluciones1> RegistroDevoluciones { get; set; }
     }
 }

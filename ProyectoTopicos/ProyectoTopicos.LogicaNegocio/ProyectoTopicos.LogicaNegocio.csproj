@@ -88,9 +88,29 @@
       <DependentUpon>LogicaNegocio.svc</DependentUpon>
     </Compile>
     <Compile Include="Logica\Accion\Articulo.cs" />
+    <Compile Include="Logica\Accion\Categoria.cs" />
+    <Compile Include="Logica\Accion\Perfil.cs" />
+    <Compile Include="Logica\Accion\RegistroDePerdidas.cs" />
+    <Compile Include="Logica\Accion\RegistroDevolucion.cs" />
+    <Compile Include="Logica\Accion\SubCategoria.cs" />
+    <Compile Include="Logica\Accion\Usuario.cs" />
     <Compile Include="Logica\Especificacion\Articulo.cs" />
+    <Compile Include="Logica\Especificacion\Categoria.cs" />
+    <Compile Include="Logica\Especificacion\Perfil.cs" />
+    <Compile Include="Logica\Especificacion\RegistroDePerdidas.cs" />
+    <Compile Include="Logica\Especificacion\RegistroDevolucion.cs" />
+    <Compile Include="Logica\Especificacion\SubCategoria.cs" />
+    <Compile Include="Logica\Especificacion\Usuario.cs" />
     <Compile Include="Logica\Repositorio\Articulo.cs" />
+    <Compile Include="Logica\Repositorio\Categoria.cs" />
+    <Compile Include="Logica\Repositorio\Perfil.cs" />
+    <Compile Include="Logica\Repositorio\RegistroDePerdidas.cs" />
+    <Compile Include="Logica\Repositorio\RegistroDevolucion.cs" />
+    <Compile Include="Logica\Repositorio\SubCategoria.cs" />
+    <Compile Include="Logica\Repositorio\Usuario.cs" />
     <Compile Include="Logica\Validacion\Articulo.cs" />
+    <Compile Include="Logica\Validacion\Categoria.cs" />
+    <Compile Include="Logica\Validacion\SubCategoria.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

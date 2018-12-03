@@ -10,12 +10,16 @@
         <EntityTypeShape EntityType="TopicosSelectosModel.RegistroDePerdidas" Width="1.5" PointX="6" PointY="3.875" IsExpanded="true" />
         <EntityTypeShape EntityType="TopicosSelectosModel.SubCategoriasArticulos" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="TopicosSelectosModel.Usuarios" Width="1.5" PointX="0.75" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TopicosSelectosModel.RegistroDevoluciones1" Width="1.5" PointX="5.25" PointY="7.625" IsExpanded="true"/>
+        <EntityTypeShape EntityType="TopicosSelectosModel.Perfiles" Width="1.5" PointX="0.75" PointY="10.625" />
         <AssociationConnector Association="TopicosSelectosModel.FK__Articulos__categ__3B75D760" ManuallyRouted="false" />
         <AssociationConnector Association="TopicosSelectosModel.FK__Articulos__subCa__3C69FB99" ManuallyRouted="false" />
         <AssociationConnector Association="TopicosSelectosModel.FK__RegistroD__categ__4222D4EF" ManuallyRouted="false" />
         <AssociationConnector Association="TopicosSelectosModel.FK__RegistroD__codig__412EB0B6" ManuallyRouted="false" />
         <AssociationConnector Association="TopicosSelectosModel.FK__RegistroD__subCa__4316F928" ManuallyRouted="false" />
-        <AssociationConnector Association="TopicosSelectosModel.RegistroDevoluciones" ManuallyRouted="false" />
+        <AssociationConnector Association="TopicosSelectosModel.FK__Usuarios__perfil__6E01572D" ManuallyRouted="false" />
+        <AssociationConnector Association="TopicosSelectosModel.FK__RegistroD__codig__07C12930" ManuallyRouted="false" />
+        <AssociationConnector Association="TopicosSelectosModel.FK__RegistroD__codig__06CD04F7" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

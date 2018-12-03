@@ -30,5 +30,7 @@ namespace ProyectoTopicos.Model
         public virtual DbSet<RegistroDePerdidas> RegistroDePerdidas { get; set; }
         public virtual DbSet<SubCategoriasArticulos> SubCategoriasArticulos { get; set; }
         public virtual DbSet<Usuarios> Usuarios { get; set; }
+        public virtual DbSet<Perfiles> Perfiles { get; set; }
+        public virtual DbSet<RegistroDevoluciones1> RegistroDevoluciones1Set { get; set; }
     }
 }

@@ -19,15 +19,20 @@ namespace ProyectoTopicos.Model
         {
             this.RegistroDePerdidas = new HashSet<RegistroDePerdidas>();
             this.Articulos = new HashSet<Articulos>();
+            this.RegistroDevoluciones = new HashSet<RegistroDevoluciones1>();
         }
     
         public string codigoUsuario { get; set; }
         public string nombre { get; set; }
         public string correo { get; set; }
+        public string perfil { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RegistroDePerdidas> RegistroDePerdidas { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Articulos> Articulos { get; set; }
+        public virtual Perfiles Perfiles { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<RegistroDevoluciones1> RegistroDevoluciones { get; set; }
     }
 }

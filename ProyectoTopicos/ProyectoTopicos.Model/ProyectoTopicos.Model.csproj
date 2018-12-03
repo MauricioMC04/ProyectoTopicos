@@ -73,9 +73,15 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataBaseModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Perfiles.cs">
+      <DependentUpon>DataBaseModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RegistroDePerdidas.cs">
+      <DependentUpon>DataBaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RegistroDevoluciones1.cs">
       <DependentUpon>DataBaseModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SubCategoriasArticulos.cs">
@@ -102,6 +108,7 @@
       <LastGenOutput>DataBaseModel.Context.cs</LastGenOutput>
       <DependentUpon>DataBaseModel.edmx</DependentUpon>
     </Content>
+    <Content Include="DataBaseModel.edmx.sql" />
     <Content Include="DataBaseModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>DataBaseModel.edmx</DependentUpon>
