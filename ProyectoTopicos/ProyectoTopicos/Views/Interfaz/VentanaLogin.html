@@ -1,0 +1,70 @@
+<!-- 
+Proyecto Tópicos Selectos de Computadoras.
+Ventana Login.
+Donde se pueda eligir el usuario (usuario administrador del sistema, usuario de la custodia, usuario invitado).
+-->
+
+
+<!DOCTYPE HTML>
+	<HEAD>
+		<html lang = "es"/>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		
+		<style>
+			.jumbotron { 
+    		background-color: green;
+    		color: #ffffff;
+			}
+			
+			.logo {
+    		font-size: 200px;
+			}
+			@media screen and (max-width: 768px) {
+    		
+    		.col-sm-4 {
+        	text-align: center;
+        	margin: 25px 0;
+    		}
+			}
+		</style>
+		
+	</HEAD>
+	<BODY>
+		<div class="jumbotron text-center">
+			<h1>Universidad Latina de Costa Rica</h1> 
+			<p>La mejor universidad privada del país</p> 
+		</div>
+	
+			<div class="container-fluid bg-grey text-center">
+      		<span class="glyphicon glyphicon-globe logo"></span> 
+
+			<div class = "container text-center">
+			<br></br>
+		
+			<label for="nombreDeUsuario"><b>Nombre de usuario:</b></label>
+			<select>
+  				<option value="usuarioAdministradorDelSistema">Usuario Administrador del Sistema</option>
+  				<option value="usuarioDeLaCustodia">Usuario de la Custodia</option>
+  				<option value="usuarioInvitado">Usuario invitado</option>
+			</select>
+			<br></br>
+			
+			<label for="contrasenna"><b> Contraseña: </b></label>
+			<input type="password" placeholder="Ingresa tu contraseña" name="psw" required>
+			<br></br>
+			
+			<button type="ingresarAlSistema" class="btn btn-success btn-md">Ingresar al sistema</button>
+			<button type="hasOlvidadoTuContrasenna" class="btn btn-success btn-md">¿Has olvidado tu contraseña?</button>
+			<br></br>
+		</div>
+		
+		</BODY>
+</HTML>
+
+
+
+

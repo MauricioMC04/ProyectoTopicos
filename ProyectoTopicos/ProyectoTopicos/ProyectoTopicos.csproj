@@ -231,6 +231,10 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Views\Interfaz\VentanaLogin.html" />
+    <Content Include="Views\Interfaz\VentanaUsrAdm.html" />
+    <Content Include="Views\Interfaz\VentanaUsrCust.html" />
+    <Content Include="Views\Interfaz\VentanaUsrInv.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -265,9 +269,14 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\Home\UsuarioAdm.cshtml" />
+    <Content Include="Views\Home\UsuarioCus.cshtml" />
+    <Content Include="Views\Home\UsuarioInv.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\App_LocalResources\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
