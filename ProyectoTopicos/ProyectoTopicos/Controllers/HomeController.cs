@@ -15,16 +15,46 @@ namespace ProyectoTopicos.Controllers
 
 		public ActionResult About()
 		{
-			ViewBag.Message = "Your application description page.";
+			ViewBag.Message = "Bienvenidos a la Ulatina";
 
 			return View();
 		}
 
 		public ActionResult Contact()
 		{
-			ViewBag.Message = "Your contact page.";
+			ViewBag.Message = "Información de Contacto";
 
 			return View();
 		}
-	}
+
+        public ActionResult Login()
+        {
+            ViewBag.Message = "Inicio de Sesión";
+
+            return View();
+        }
+
+        public ActionResult UsuarioAdm()
+        {
+            ViewBag.Message = "Usuario Administrador";
+
+            return View(); 
+
+        }
+        public ActionResult UsuarioCus()
+        {
+            ViewBag.Message = "Usuario de Custodia";
+
+            return View();
+
+        }
+
+        public ActionResult UsuarioInv()
+        {
+            ViewBag.Message = "Usuario Invitado";
+
+            return View();
+
+        }
+    }
 }
