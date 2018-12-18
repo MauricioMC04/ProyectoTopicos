@@ -1,6 +1,7 @@
 ﻿
 @{
     ViewBag.Title = "Login";
+    Layout = "";
 }
 
 <!--
@@ -41,29 +42,54 @@ Donde se pueda eligir el usuario (usuario administrador del sistema, usuario de 
         <span class="glyphicon glyphicon-globe logo"></span>
 
         <div class="container text-center">
-            <br></br>
+            @if (ViewBag.Mensaje != null)
+            {
+                <div class="alert alert-danger">
+                    <strong>Error!</strong> @ViewBag.Mensaje
+                </div>
+            }
 
-            <label for="nombreDeUsuario"><b>Nombre de usuario:</b></label>
-            <select>
-                <option value="usuarioAdministradorDelSistema">Usuario Administrador del Sistema</option>
-                <option value="usuarioDeLaCustodia">Usuario de la Custodia</option>
-                <option value="usuarioInvitado">Usuario invitado</option>
-            </select>
-            <br></br>
+            <div>
 
-            <label for="contrasenna"><b> Contraseña: </b></label>
-            <input type="password" placeholder="Ingresa tu contraseña" name="psw" required>
-            <br></br>
+                @using (Html.BeginForm("Login", "Home", FormMethod.Post))
+                {
 
-            <button type="ingresarAlSistema" class="btn btn-success btn-md">Ingresar al sistema</button>
-            <button type="hasOlvidadoTuContrasenna" class="btn btn-success btn-md">¿Has olvidado tu contraseña?</button>
-            <br></br>
+                    <div class="form-group row">
+
+                        <label class="col-md-2" for="nombreDeUsuario">Usuario:</label>
+
+                        <div class="col-md-10">
+                            <select name="TipoCuenta" class="form-control" id="TipoCuenta">
+                                <option value="Adm">Administrador</option>
+                                <option value="Cus">Custodia</option>
+                                <option value="Inv">Invitado</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+
+
+                        <label for="contrasenna" class="col-md-2"><b> Contraseña: </b></label>
+
+                        <div class="col-md-10">
+                            <input type="password" class="form-control" placeholder="Ingresa tu contraseña" name="Contrasenna" id="Contrasenna" required>
+                        </div>
+                    </div>
+
+
+                    <input class="btn btn-success btn-md" type="submit" name="SUBMITBUTTON" value="Ingresar" />
+                    <button type="button" class="btn btn-success btn-md">¿Has olvidado tu contraseña?</button>
+
+                }
+            </div>
+
         </div>
         <div class="container body-content">
-            @RenderBody()
+           
             <hr />
             <footer>
-                <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+                <p>&copy; @DateTime.Now.Year - Universidad Latina CR</p>
             </footer>
         </div>
 
@@ -71,7 +97,19 @@ Donde se pueda eligir el usuario (usuario administrador del sistema, usuario de 
 </BODY>
 </HTML>
 
-
-
-
+<script src="http://code.jquery.com/jquery-3.0.0.min.js"></script>
+<script>
+    $('#link').on('submit', function (e) {
+        e.preventDefault();
+        var $form = $(this),
+            $select = $form.find('select'),
+            links = $select.val();
+        if (links.length > 0) {
+            for (i in links) {
+                link = links[i];
+                window.open(link);
+            }
+        }
+    });
+</script>
 

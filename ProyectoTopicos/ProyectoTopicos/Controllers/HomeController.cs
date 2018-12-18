@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProyectoTopicos.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -27,6 +28,7 @@ namespace ProyectoTopicos.Controllers
 			return View();
 		}
 
+        [HttpGet]
         public ActionResult Login()
         {
             ViewBag.Message = "Inicio de Sesión";
@@ -34,6 +36,35 @@ namespace ProyectoTopicos.Controllers
             return View();
         }
 
+        [HttpPost]
+        public ActionResult Login(LoginInfo modelo)
+        {
+            if (!ModelState.IsValid)
+            {
+                ViewBag.Mensaje = "El modelo no esta correcto";
+                return View();
+            }
+
+            //Validar contrasenna
+            var n = 2;
+            if (n==1) {
+                ViewBag.Mensaje = "Contraseña incorrecta";
+                
+                return View();
+            }
+            switch (modelo.TipoCuenta)
+            {
+                case "Adm":
+                    return RedirectToAction("UsuarioAdm");
+                case "Cus":
+                    return RedirectToAction("UsuarioCus");
+                case "Inv":
+                    return RedirectToAction("UsuarioInv");
+                default:
+                    ViewBag.Mensaje = "Usuario no valido";
+                    return View();
+            }
+        }
         public ActionResult UsuarioAdm()
         {
             ViewBag.Message = "Usuario Administrador";
