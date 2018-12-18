@@ -30,6 +30,17 @@ Donde se pueda eligir el usuario (usuario administrador del sistema, usuario de 
         }
     </style>
 
+    <script>
+        function la(src) {
+            window.location = src;
+        }
+
+    function WinOpen() {
+        var url=document.redirect.selection.value
+        document.location.href=url
+    }
+
+    </script>
 </HEAD>
 <BODY>
     <div class="jumbotron text-center">
@@ -41,22 +52,48 @@ Donde se pueda eligir el usuario (usuario administrador del sistema, usuario de 
         <span class="glyphicon glyphicon-globe logo"></span>
 
         <div class="container text-center">
-            <br></br>
+            <br>
 
-            <label for="nombreDeUsuario"><b>Nombre de usuario:</b></label>
-            <select>
-                <option value="usuarioAdministradorDelSistema">Usuario Administrador del Sistema</option>
-                <option value="usuarioDeLaCustodia">Usuario de la Custodia</option>
-                <option value="usuarioInvitado">Usuario invitado</option>
-            </select>
-            <br></br>
+            @*<label for="nombreDeUsuario"><b>Nombre de usuario:</b></label>*@
+            @*<select>
+                <option value="http://www.google.com">Usuario Administrador del Sistema</option>
+                <option value="http://www.google.com">Usuario de la Custodia</option>
+                <option value="http://www.google.com">Usuario invitado</option>
+            </select>*@
+            @*<form target="_blank">*@
 
-            <label for="contrasenna"><b> Contraseña: </b></label>
-            <input type="password" placeholder="Ingresa tu contraseña" name="psw" required>
-            <br></br>
 
-            <button type="ingresarAlSistema" class="btn btn-success btn-md">Ingresar al sistema</button>
-            <button type="hasOlvidadoTuContrasenna" class="btn btn-success btn-md">¿Has olvidado tu contraseña?</button>
+                @*<select>
+                    <option value="http://www.google.com">Opcion1</option>
+                    <option value="http://www.google.com">Opcion2</option>
+                    <option value="http://www.google.com">Opcion2</option>
+                </select>*@ 
+
+            <form name="redirect">
+                <label for="nombreDeUsuario"><b>Nombre de usuario:</b></label>
+                <select name="selection">
+                    <option value="http://www.google.com">Usuario Administrador</option>
+                    <option value="http://www.google.com">Usuario de la Custodia</option>
+                    <option value="http://www.google.com">Usuario Invitado</option>
+                </select>
+                @*<input type=button value="Go!" onClick="WinOpen();">*@
+
+                <br>
+                <br>
+
+                <label for="contrasenna"><b> Contraseña: </b></label>
+                <input type="password" placeholder="Ingresa tu contraseña" name="psw" required>
+
+                <br></br>
+
+                <button type="button" class="btn btn-success btn-md" onclick="WinOpen()">Ingresar al sistema</button>
+                <button type="submit" class="btn btn-success btn-md">¿Has olvidado tu contraseña?</button>
+            </form>
+
+                
+            @*</form>*@
+
+            <br></br>
             <br></br>
         </div>
         <div class="container body-content">
