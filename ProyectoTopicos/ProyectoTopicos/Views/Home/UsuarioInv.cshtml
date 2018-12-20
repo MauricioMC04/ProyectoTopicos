@@ -220,12 +220,76 @@ Puede tener las siguientes funcionalidades: artículos bajo custodia y registro 
     <div id="articulo" class="container-fluid bg-grey">
         <h2>Consulta de artículos bajo custodia</h2>
         <h4>1. Consultar los artículos que están sin asignar:</h4>
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Articulos</th>
+                    <th scope="col">Categoria</th>
+                    <th scope="col">Sub-Categoria</th>
+                    <th scope="col">Detalle</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Articulo1</td>
+                    <td>Categoria1</td>
+                    <td>Sub-Categoria1</td>
+                    <td>Detalle1</td>
+                </tr>
+                <tr>
+                    <th scope="row">2</th>
+                    <td>Articulo2</td>
+                    <td>Categoria2</td>
+                    <td>Sub-Categoria2</td>
+                    <td>Detalle2</td>
+                </tr>
+                <tr>
+                    <th scope="row">3</th>
+                    <td>Articulo3</td>
+                    <td>Categoria3</td>
+                    <td>Sub-Categoria3</td>
+                    <td>Detalle3</td>
+                </tr>
+            </tbody>
+        </table>
+        <br>
     </div>
 
     <!-- Container (Ingresar un reporte de artículo perdido) -->
     <div id="registro" class="container-fluid">
         <h2>Ingresar un reporte de artículo perdido</h2>
-        <h4>1. Registrar las características de un artículo que ha sido extraviado.</h4>
+        <h4>2. Registrar las caracteristicas de un articulo que ha sido extraviado.</h4>
+        <h4>Digite nuevo artículo:</h4>
+        <input type="text" class="form-control" placeholder="Ingrese nuevo artículo" name="nuevoArticulo" id="nuevoArticulo" required>
+
+        <h4>Digite categoria artículo:</h4>
+        <input type="text" class="form-control" placeholder="Ingrese categoria artículo" name="categoriaArticulo" id="categoriaArticulo" required>
+
+        <h4>Digite sub-categoria artículo:</h4>
+        <input type="text" class="form-control" placeholder="Ingrese sub-categoria artículo" name="sub-categoriaArticulo" id="subcategoriaArticulo" required>
+
+        <h4>Digite detalle artículo:</h4>
+        <input type="text" class="form-control" placeholder="Ingrese detalle artículo" name="detalleArticulo" id="detalleArticulo" required>
+
+        <h4>Digite fecha actual:</h4>
+        <input type="text" class="form-control" placeholder="Ingrese fecha actual" name="fechaActual" id="fechaActual" required>
+        <br>
+
+        <h4>Digite nombre completo:</h4>
+        <input type="text" class="form-control" placeholder="Ingrese nombre completo" name="nombreCompleto" id="nombreCompleto" required>
+
+        <h4>Digite numero de carnet:</h4>
+        <input type="text" class="form-control" placeholder="Ingrese carnet" name="numeroCarnet" id="numeroCarnet" required>
+
+        <h4>Digite numero de telefono:</h4>
+        <input type="text" class="form-control" placeholder="Ingrese telefono" name="numeroTelefono" id="numeroTelefono" required>
+
+        <button type="button" class="btn btn-success btn-md">Guardar nuevo artículo</button>
+
+        <br>
+        <br>
     </div>
 
     <!-- Container (Contact Section) -->
