@@ -4,249 +4,250 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="TopicosSelectosModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-  <EntityContainer Name="TopicosSelectosModelStoreContainer">
-    <EntitySet Name="Articulos" EntityType="TopicosSelectosModel.Store.Articulos" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="CategoriasArticulos" EntityType="TopicosSelectosModel.Store.CategoriasArticulos" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="RegistroDePerdidas" EntityType="TopicosSelectosModel.Store.RegistroDePerdidas" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="SubCategoriasArticulos" EntityType="TopicosSelectosModel.Store.SubCategoriasArticulos" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Usuarios" EntityType="TopicosSelectosModel.Store.Usuarios" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Perfiles" EntityType="TopicosSelectosModel.Store.Perfiles" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="RegistroDevoluciones1Set" EntityType="TopicosSelectosModel.Store.RegistroDevoluciones1Set" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="RegistroDevoluciones" EntityType="TopicosSelectosModel.Store.RegistroDevoluciones" store:Type="Tables" Schema="dbo" />
-    <AssociationSet Name="FK__Articulos__categ__3B75D760" Association="TopicosSelectosModel.Store.FK__Articulos__categ__3B75D760">
-      <End Role="CategoriasArticulos" EntitySet="CategoriasArticulos" />
-      <End Role="Articulos" EntitySet="Articulos" />
-    </AssociationSet>
-    <AssociationSet Name="FK__Articulos__subCa__3C69FB99" Association="TopicosSelectosModel.Store.FK__Articulos__subCa__3C69FB99">
-      <End Role="SubCategoriasArticulos" EntitySet="SubCategoriasArticulos" />
-      <End Role="Articulos" EntitySet="Articulos" />
-    </AssociationSet>
-    <AssociationSet Name="FK__RegistroD__categ__4222D4EF" Association="TopicosSelectosModel.Store.FK__RegistroD__categ__4222D4EF">
-      <End Role="CategoriasArticulos" EntitySet="CategoriasArticulos" />
-      <End Role="RegistroDePerdidas" EntitySet="RegistroDePerdidas" />
-    </AssociationSet>
-    <AssociationSet Name="FK__RegistroD__codig__412EB0B6" Association="TopicosSelectosModel.Store.FK__RegistroD__codig__412EB0B6">
-      <End Role="Usuarios" EntitySet="Usuarios" />
-      <End Role="RegistroDePerdidas" EntitySet="RegistroDePerdidas" />
-    </AssociationSet>
-    <AssociationSet Name="FK__RegistroD__subCa__4316F928" Association="TopicosSelectosModel.Store.FK__RegistroD__subCa__4316F928">
-      <End Role="SubCategoriasArticulos" EntitySet="SubCategoriasArticulos" />
-      <End Role="RegistroDePerdidas" EntitySet="RegistroDePerdidas" />
-    </AssociationSet>
-    <AssociationSet Name="FK_RegistroDevoluciones_Usuarios" Association="TopicosSelectosModel.Store.FK_RegistroDevoluciones_Usuarios">
-      <End Role="Usuarios" EntitySet="Usuarios" />
-      <End Role="RegistroDevoluciones" EntitySet="RegistroDevoluciones" />
-    </AssociationSet>
-    <AssociationSet Name="FK_RegistroDevoluciones_Articulos" Association="TopicosSelectosModel.Store.FK_RegistroDevoluciones_Articulos">
-      <End Role="Articulos" EntitySet="Articulos" />
-      <End Role="RegistroDevoluciones" EntitySet="RegistroDevoluciones" />
-    </AssociationSet>
-    <AssociationSet Name="FK__Usuarios__perfil__6E01572D" Association="TopicosSelectosModel.Store.FK__Usuarios__perfil__6E01572D">
-      <End Role="Perfiles" EntitySet="Perfiles" />
-      <End Role="Usuarios" EntitySet="Usuarios" />
-    </AssociationSet>
-    <AssociationSet Name="FK__RegistroD__codig__07C12930" Association="TopicosSelectosModel.Store.FK__RegistroD__codig__07C12930">
-      <End Role="Articulos" EntitySet="Articulos" />
-      <End Role="RegistroDevoluciones1" EntitySet="RegistroDevoluciones1Set" />
-    </AssociationSet>
-    <AssociationSet Name="FK__RegistroD__codig__06CD04F7" Association="TopicosSelectosModel.Store.FK__RegistroD__codig__06CD04F7">
-      <End Role="Usuarios" EntitySet="Usuarios" />
-      <End Role="RegistroDevoluciones1" EntitySet="RegistroDevoluciones1Set" />
-    </AssociationSet>
-  </EntityContainer>
-  <EntityType Name="Articulos">
-    <Key>
-      <PropertyRef Name="codigoArticulo" />
-    </Key>
-    <Property Name="codigoArticulo" Type="varchar" Nullable="false" MaxLength="50" />
-    <Property Name="nombre" Type="varchar" Nullable="false" MaxLength="50" />
-    <Property Name="fechaIngreso" Type="datetime" Nullable="false" />
-    <Property Name="estado" Type="varchar" Nullable="false" MaxLength="50" />
-    <Property Name="categoria" Type="varchar" Nullable="true" MaxLength="50" />
-    <Property Name="subCategoria" Type="varchar" Nullable="true" MaxLength="50" />
-    <Property Name="fechaEntrega" Type="datetime" Nullable="true" />
-    <Property Name="descripcion" Type="varchar" Nullable="true" MaxLength="200" />
-  </EntityType>
-  <EntityType Name="CategoriasArticulos">
-    <Key>
-      <PropertyRef Name="codigoCategoria" />
-    </Key>
-    <Property Name="codigoCategoria" Type="varchar" Nullable="false" MaxLength="50" />
-    <Property Name="categoria" Type="varchar" Nullable="false" MaxLength="50" />
-  </EntityType>
-  <EntityType Name="RegistroDePerdidas">
-    <Key>
-      <PropertyRef Name="codigoUsuario" />
-      <PropertyRef Name="categoria" />
-      <PropertyRef Name="subCategoria" />
-      <PropertyRef Name="descripcion" />
-    </Key>
-    <Property Name="codigoUsuario" Type="varchar" Nullable="false" MaxLength="50" />
-    <Property Name="categoria" Type="varchar" Nullable="false" MaxLength="50" />
-    <Property Name="subCategoria" Type="varchar" Nullable="false" MaxLength="50" />
-    <Property Name="descripcion" Type="varchar" Nullable="false" MaxLength="200" />
-  </EntityType>
-  <EntityType Name="SubCategoriasArticulos">
-    <Key>
-      <PropertyRef Name="codigoSubCategoria" />
-    </Key>
-    <Property Name="codigoSubCategoria" Type="varchar" Nullable="false" MaxLength="50" />
-    <Property Name="subCategoria" Type="varchar" Nullable="false" MaxLength="50" />
-  </EntityType>
-  <EntityType Name="Usuarios">
-    <Key>
-      <PropertyRef Name="codigoUsuario" />
-    </Key>
-    <Property Name="codigoUsuario" Type="varchar" Nullable="false" MaxLength="50" />
-    <Property Name="nombre" Type="varchar" Nullable="false" MaxLength="50" />
-    <Property Name="correo" Type="varchar" Nullable="true" MaxLength="50" />
-    <Property Name="perfil" Type="varchar" Nullable="true" MaxLength="50" />
-  </EntityType>
-  <EntityType Name="Perfiles">
-    <Key>
-      <PropertyRef Name="codigoPerfil" />
-    </Key>
-    <Property Name="codigoPerfil" Type="varchar" Nullable="false" MaxLength="50" />
-    <Property Name="perfil" Type="varchar" Nullable="false" MaxLength="50" />
-  </EntityType>
-  <EntityType Name="RegistroDevoluciones1Set">
-    <Key>
-      <PropertyRef Name="codigoDevolucion" />
-    </Key>
-    <Property Name="codigoDevolucion" Type="varchar" Nullable="false" MaxLength="50" />
-    <Property Name="codigoUsuario" Type="varchar" Nullable="false" MaxLength="50" />
-    <Property Name="codigoArticulo" Type="varchar" Nullable="false" MaxLength="50" />
-  </EntityType>
-  <EntityType Name="RegistroDevoluciones">
-    <Key>
-      <PropertyRef Name="Usuarios_codigoUsuario" />
-      <PropertyRef Name="Articulos_codigoArticulo" />
-    </Key>
-    <Property Name="Usuarios_codigoUsuario" Type="varchar" Nullable="false" MaxLength="50" />
-    <Property Name="Articulos_codigoArticulo" Type="varchar" Nullable="false" MaxLength="50" />
-  </EntityType>
-  <Association Name="FK__Articulos__categ__3B75D760">
-    <End Role="CategoriasArticulos" Type="TopicosSelectosModel.Store.CategoriasArticulos" Multiplicity="0..1" />
-    <End Role="Articulos" Type="TopicosSelectosModel.Store.Articulos" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="CategoriasArticulos">
-        <PropertyRef Name="codigoCategoria" />
-      </Principal>
-      <Dependent Role="Articulos">
-        <PropertyRef Name="categoria" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__Articulos__subCa__3C69FB99">
-    <End Role="SubCategoriasArticulos" Type="TopicosSelectosModel.Store.SubCategoriasArticulos" Multiplicity="0..1" />
-    <End Role="Articulos" Type="TopicosSelectosModel.Store.Articulos" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="SubCategoriasArticulos">
-        <PropertyRef Name="codigoSubCategoria" />
-      </Principal>
-      <Dependent Role="Articulos">
-        <PropertyRef Name="subCategoria" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__RegistroD__categ__4222D4EF">
-    <End Role="CategoriasArticulos" Type="TopicosSelectosModel.Store.CategoriasArticulos" Multiplicity="1" />
-    <End Role="RegistroDePerdidas" Type="TopicosSelectosModel.Store.RegistroDePerdidas" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="CategoriasArticulos">
-        <PropertyRef Name="codigoCategoria" />
-      </Principal>
-      <Dependent Role="RegistroDePerdidas">
-        <PropertyRef Name="categoria" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__RegistroD__codig__412EB0B6">
-    <End Role="Usuarios" Type="TopicosSelectosModel.Store.Usuarios" Multiplicity="1" />
-    <End Role="RegistroDePerdidas" Type="TopicosSelectosModel.Store.RegistroDePerdidas" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Usuarios">
-        <PropertyRef Name="codigoUsuario" />
-      </Principal>
-      <Dependent Role="RegistroDePerdidas">
-        <PropertyRef Name="codigoUsuario" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__RegistroD__subCa__4316F928">
-    <End Role="SubCategoriasArticulos" Type="TopicosSelectosModel.Store.SubCategoriasArticulos" Multiplicity="1" />
-    <End Role="RegistroDePerdidas" Type="TopicosSelectosModel.Store.RegistroDePerdidas" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="SubCategoriasArticulos">
-        <PropertyRef Name="codigoSubCategoria" />
-      </Principal>
-      <Dependent Role="RegistroDePerdidas">
-        <PropertyRef Name="subCategoria" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__Usuarios__perfil__6E01572D">
-    <End Role="Perfiles" Type="TopicosSelectosModel.Store.Perfiles" Multiplicity="0..1" />
-    <End Role="Usuarios" Type="TopicosSelectosModel.Store.Usuarios" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Perfiles">
-        <PropertyRef Name="codigoPerfil" />
-      </Principal>
-      <Dependent Role="Usuarios">
-        <PropertyRef Name="perfil" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__RegistroD__codig__07C12930">
-    <End Role="Articulos" Type="TopicosSelectosModel.Store.Articulos" Multiplicity="1" />
-    <End Role="RegistroDevoluciones1" Type="TopicosSelectosModel.Store.RegistroDevoluciones1Set" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Articulos">
-        <PropertyRef Name="codigoArticulo" />
-      </Principal>
-      <Dependent Role="RegistroDevoluciones1">
-        <PropertyRef Name="codigoArticulo" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__RegistroD__codig__06CD04F7">
-    <End Role="Usuarios" Type="TopicosSelectosModel.Store.Usuarios" Multiplicity="1" />
-    <End Role="RegistroDevoluciones1" Type="TopicosSelectosModel.Store.RegistroDevoluciones1Set" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Usuarios">
-        <PropertyRef Name="codigoUsuario" />
-      </Principal>
-      <Dependent Role="RegistroDevoluciones1">
-        <PropertyRef Name="codigoUsuario" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_RegistroDevoluciones_Usuarios">
-    <End Role="Usuarios" Type="TopicosSelectosModel.Store.Usuarios" Multiplicity="1" />
-    <End Role="RegistroDevoluciones" Type="TopicosSelectosModel.Store.RegistroDevoluciones" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Usuarios">
-        <PropertyRef Name="codigoUsuario" />
-      </Principal>
-      <Dependent Role="RegistroDevoluciones">
-        <PropertyRef Name="Usuarios_codigoUsuario" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_RegistroDevoluciones_Articulos">
-    <End Role="RegistroDevoluciones" Type="TopicosSelectosModel.Store.RegistroDevoluciones" Multiplicity="*" />
-    <End Role="Articulos" Type="TopicosSelectosModel.Store.Articulos" Multiplicity="1" />
-    <ReferentialConstraint>
-      <Principal Role="Articulos">
-        <PropertyRef Name="codigoArticulo" />
-      </Principal>
-      <Dependent Role="RegistroDevoluciones">
-        <PropertyRef Name="Articulos_codigoArticulo" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-</Schema></edmx:StorageModels>
+    <Schema Namespace="TopicosSelectosModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Articulos">
+          <Key>
+            <PropertyRef Name="codigoArticulo" />
+          </Key>
+          <Property Name="codigoArticulo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="fechaIngreso" Type="datetime" Nullable="false" />
+          <Property Name="estado" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="categoria" Type="varchar" MaxLength="50" />
+          <Property Name="subCategoria" Type="varchar" MaxLength="50" />
+          <Property Name="fechaEntrega" Type="datetime" />
+          <Property Name="descripcion" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="CategoriasArticulos">
+          <Key>
+            <PropertyRef Name="codigoCategoria" />
+          </Key>
+          <Property Name="codigoCategoria" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="categoria" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Perfiles">
+          <Key>
+            <PropertyRef Name="codigoPerfil" />
+          </Key>
+          <Property Name="codigoPerfil" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="perfil" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RegistroDePerdidas">
+          <Key>
+            <PropertyRef Name="codigoUsuario" />
+            <PropertyRef Name="categoria" />
+            <PropertyRef Name="subCategoria" />
+            <PropertyRef Name="descripcion" />
+          </Key>
+          <Property Name="codigoUsuario" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="categoria" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="subCategoria" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RegistroDevoluciones">
+          <Key>
+            <PropertyRef Name="Usuarios_codigoUsuario" />
+            <PropertyRef Name="Articulos_codigoArticulo" />
+          </Key>
+          <Property Name="Usuarios_codigoUsuario" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Articulos_codigoArticulo" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RegistroDevoluciones1Set">
+          <Key>
+            <PropertyRef Name="codigoDevolucion" />
+          </Key>
+          <Property Name="codigoDevolucion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="codigoUsuario" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="codigoArticulo" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SubCategoriasArticulos">
+          <Key>
+            <PropertyRef Name="codigoSubCategoria" />
+          </Key>
+          <Property Name="codigoSubCategoria" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="subCategoria" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Usuarios">
+          <Key>
+            <PropertyRef Name="codigoUsuario" />
+          </Key>
+          <Property Name="codigoUsuario" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="correo" Type="varchar" MaxLength="50" />
+          <Property Name="perfil" Type="varchar" MaxLength="50" />
+          <Property Name="pwd" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <Association Name="FK__Articulos__categ__3B75D760">
+          <End Role="CategoriasArticulos" Type="Self.CategoriasArticulos" Multiplicity="0..1" />
+          <End Role="Articulos" Type="Self.Articulos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CategoriasArticulos">
+              <PropertyRef Name="codigoCategoria" />
+            </Principal>
+            <Dependent Role="Articulos">
+              <PropertyRef Name="categoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Articulos__subCa__3C69FB99">
+          <End Role="SubCategoriasArticulos" Type="Self.SubCategoriasArticulos" Multiplicity="0..1" />
+          <End Role="Articulos" Type="Self.Articulos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SubCategoriasArticulos">
+              <PropertyRef Name="codigoSubCategoria" />
+            </Principal>
+            <Dependent Role="Articulos">
+              <PropertyRef Name="subCategoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RegistroD__categ__4222D4EF">
+          <End Role="CategoriasArticulos" Type="Self.CategoriasArticulos" Multiplicity="1" />
+          <End Role="RegistroDePerdidas" Type="Self.RegistroDePerdidas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CategoriasArticulos">
+              <PropertyRef Name="codigoCategoria" />
+            </Principal>
+            <Dependent Role="RegistroDePerdidas">
+              <PropertyRef Name="categoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RegistroD__codig__06CD04F7">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+          <End Role="RegistroDevoluciones1Set" Type="Self.RegistroDevoluciones1Set" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="codigoUsuario" />
+            </Principal>
+            <Dependent Role="RegistroDevoluciones1Set">
+              <PropertyRef Name="codigoUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RegistroD__codig__07C12930">
+          <End Role="Articulos" Type="Self.Articulos" Multiplicity="1" />
+          <End Role="RegistroDevoluciones1Set" Type="Self.RegistroDevoluciones1Set" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Articulos">
+              <PropertyRef Name="codigoArticulo" />
+            </Principal>
+            <Dependent Role="RegistroDevoluciones1Set">
+              <PropertyRef Name="codigoArticulo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RegistroD__codig__412EB0B6">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+          <End Role="RegistroDePerdidas" Type="Self.RegistroDePerdidas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="codigoUsuario" />
+            </Principal>
+            <Dependent Role="RegistroDePerdidas">
+              <PropertyRef Name="codigoUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RegistroD__subCa__4316F928">
+          <End Role="SubCategoriasArticulos" Type="Self.SubCategoriasArticulos" Multiplicity="1" />
+          <End Role="RegistroDePerdidas" Type="Self.RegistroDePerdidas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SubCategoriasArticulos">
+              <PropertyRef Name="codigoSubCategoria" />
+            </Principal>
+            <Dependent Role="RegistroDePerdidas">
+              <PropertyRef Name="subCategoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Usuarios__perfil__6E01572D">
+          <End Role="Perfiles" Type="Self.Perfiles" Multiplicity="0..1" />
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Perfiles">
+              <PropertyRef Name="codigoPerfil" />
+            </Principal>
+            <Dependent Role="Usuarios">
+              <PropertyRef Name="perfil" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RegistroDevoluciones_Articulos">
+          <End Role="Articulos" Type="Self.Articulos" Multiplicity="1" />
+          <End Role="RegistroDevoluciones" Type="Self.RegistroDevoluciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Articulos">
+              <PropertyRef Name="codigoArticulo" />
+            </Principal>
+            <Dependent Role="RegistroDevoluciones">
+              <PropertyRef Name="Articulos_codigoArticulo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RegistroDevoluciones_Usuarios">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+          <End Role="RegistroDevoluciones" Type="Self.RegistroDevoluciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="codigoUsuario" />
+            </Principal>
+            <Dependent Role="RegistroDevoluciones">
+              <PropertyRef Name="Usuarios_codigoUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TopicosSelectosModelStoreContainer">
+          <EntitySet Name="Articulos" EntityType="Self.Articulos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CategoriasArticulos" EntityType="Self.CategoriasArticulos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Perfiles" EntityType="Self.Perfiles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RegistroDePerdidas" EntityType="Self.RegistroDePerdidas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RegistroDevoluciones" EntityType="Self.RegistroDevoluciones" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RegistroDevoluciones1Set" EntityType="Self.RegistroDevoluciones1Set" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SubCategoriasArticulos" EntityType="Self.SubCategoriasArticulos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Articulos__categ__3B75D760" Association="Self.FK__Articulos__categ__3B75D760">
+            <End Role="CategoriasArticulos" EntitySet="CategoriasArticulos" />
+            <End Role="Articulos" EntitySet="Articulos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Articulos__subCa__3C69FB99" Association="Self.FK__Articulos__subCa__3C69FB99">
+            <End Role="SubCategoriasArticulos" EntitySet="SubCategoriasArticulos" />
+            <End Role="Articulos" EntitySet="Articulos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RegistroD__categ__4222D4EF" Association="Self.FK__RegistroD__categ__4222D4EF">
+            <End Role="CategoriasArticulos" EntitySet="CategoriasArticulos" />
+            <End Role="RegistroDePerdidas" EntitySet="RegistroDePerdidas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RegistroD__codig__06CD04F7" Association="Self.FK__RegistroD__codig__06CD04F7">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="RegistroDevoluciones1Set" EntitySet="RegistroDevoluciones1Set" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RegistroD__codig__07C12930" Association="Self.FK__RegistroD__codig__07C12930">
+            <End Role="Articulos" EntitySet="Articulos" />
+            <End Role="RegistroDevoluciones1Set" EntitySet="RegistroDevoluciones1Set" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RegistroD__codig__412EB0B6" Association="Self.FK__RegistroD__codig__412EB0B6">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="RegistroDePerdidas" EntitySet="RegistroDePerdidas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RegistroD__subCa__4316F928" Association="Self.FK__RegistroD__subCa__4316F928">
+            <End Role="SubCategoriasArticulos" EntitySet="SubCategoriasArticulos" />
+            <End Role="RegistroDePerdidas" EntitySet="RegistroDePerdidas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Usuarios__perfil__6E01572D" Association="Self.FK__Usuarios__perfil__6E01572D">
+            <End Role="Perfiles" EntitySet="Perfiles" />
+            <End Role="Usuarios" EntitySet="Usuarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RegistroDevoluciones_Articulos" Association="Self.FK_RegistroDevoluciones_Articulos">
+            <End Role="Articulos" EntitySet="Articulos" />
+            <End Role="RegistroDevoluciones" EntitySet="RegistroDevoluciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RegistroDevoluciones_Usuarios" Association="Self.FK_RegistroDevoluciones_Usuarios">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="RegistroDevoluciones" EntitySet="RegistroDevoluciones" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="TopicosSelectosModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -256,11 +257,11 @@
           </Key>
           <Property Name="codigoArticulo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="fechaIngreso" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="fechaIngreso" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="estado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="categoria" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="subCategoria" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="fechaEntrega" Type="DateTime" Precision="0" />
+          <Property Name="fechaEntrega" Type="DateTime" Precision="3" />
           <Property Name="descripcion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="CategoriasArticulos" Relationship="Self.FK__Articulos__categ__3B75D760" FromRole="Articulos" ToRole="CategoriasArticulos" />
           <NavigationProperty Name="SubCategoriasArticulos" Relationship="Self.FK__Articulos__subCa__3C69FB99" FromRole="Articulos" ToRole="SubCategoriasArticulos" />
@@ -312,6 +313,7 @@
           <Property Name="perfil" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Perfiles" Relationship="TopicosSelectosModel.FK__Usuarios__perfil__6E01572D" FromRole="Usuarios" ToRole="Perfiles" />
           <NavigationProperty Name="RegistroDevoluciones" Relationship="TopicosSelectosModel.FK__RegistroD__codig__06CD04F7" FromRole="Usuarios" ToRole="RegistroDevoluciones1" />
+          <Property Name="pwd" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="FK__Articulos__categ__3B75D760">
           <End Role="CategoriasArticulos" Type="Self.CategoriasArticulos" Multiplicity="0..1" />
@@ -525,7 +527,8 @@
     <EntitySetMapping Name="Usuarios">
       <EntityTypeMapping TypeName="IsTypeOf(TopicosSelectosModel.Usuarios)">
         <MappingFragment StoreEntitySet="Usuarios">
-          <ScalarProperty Name="codigoUsuario" ColumnName="codigoUsuario" />
+          <ScalarProperty Name="pwd" ColumnName="pwd" />
+                <ScalarProperty Name="codigoUsuario" ColumnName="codigoUsuario" />
           <ScalarProperty Name="nombre" ColumnName="nombre" />
           <ScalarProperty Name="correo" ColumnName="correo" />
           <ScalarProperty Name="perfil" ColumnName="perfil" />

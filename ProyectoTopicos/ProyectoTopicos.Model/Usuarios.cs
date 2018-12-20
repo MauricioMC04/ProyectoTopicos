@@ -26,6 +26,7 @@ namespace ProyectoTopicos.Model
         public string nombre { get; set; }
         public string correo { get; set; }
         public string perfil { get; set; }
+        public string pwd { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RegistroDePerdidas> RegistroDePerdidas { get; set; }
