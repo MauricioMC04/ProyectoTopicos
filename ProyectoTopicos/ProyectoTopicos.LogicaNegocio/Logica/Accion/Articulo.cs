@@ -7,6 +7,7 @@ namespace ProyectoTopicos.LogicaNegocio.Logica.Accion
 {
 	public class Articulo
 	{
+       
 		public IList<Model.Articulos> ListarPorCategoria(string categoria)
 		{
 			var repositorio = new Repositorio.Articulo();
@@ -62,5 +63,10 @@ namespace ProyectoTopicos.LogicaNegocio.Logica.Accion
 			var resultado = repositorio.SetEstado(codigo, estado);
 			return resultado;
 		}
+
+        public List<Model.Articulos> ObtenerTodos() {
+            var repo = new Repositorio.Articulo();
+            return repo.ObtenerTodos();
+        }
 	}
 }

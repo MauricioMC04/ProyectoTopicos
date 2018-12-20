@@ -1,9 +1,12 @@
-﻿using ProyectoTopicos.Models;
+﻿
+using ProyectoTopicos.Models;
+using ProyectoTopicos.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using ProyectoTopicos.LogicaNegocio.Logica.Repositorio;
 
 namespace ProyectoTopicos.Controllers
 {
@@ -82,10 +85,52 @@ namespace ProyectoTopicos.Controllers
 
         public ActionResult UsuarioInv()
         {
+            Articulo art = new Articulo();
+            var categorias = new Categoria();
+            var subCategoria = new SubCategoria();
+
+            var lista = art.ObtenerTodos();
+            var listaCategorias = categorias.getAll();
+            var listaSub = subCategoria.getAll();
+
+            var viewModel = new UsuarioInvViewModel
+            {
+                ListaArticulos = lista.Select(r => new ArticulosDTO {
+                    categoria = r.CategoriasArticulos.categoria,
+                    codigoArticulo = r.codigoArticulo,
+                    descripcion = r.descripcion,
+                    nombre = r.nombre,
+                    subCategoria = r.SubCategoriasArticulos.subCategoria
+
+                }).ToList()
+                ,
+                listaCategorias = listaCategorias.Select(r => new SelectListItem {
+                    Text = r.categoria,
+                    Value = r.codigoCategoria
+                }).ToList(),
+                listaSubCategorias = listaSub.Select(r => new SelectListItem {
+                    Text = r.subCategoria,
+                    Value = r.codigoSubCategoria
+                }).ToList()
+            };
             ViewBag.Message = "Usuario Invitado";
 
-            return View();
+            return View(viewModel);
 
+        }
+
+        public ActionResult UsuarioInvGuardar(UsuarioInvViewModel modelo)
+        {
+            Articulo art = new Articulo();
+            art.AddArticulo(modelo.nombre, DateTime.Now, "AC", modelo.categoria, modelo.subCategoria, DateTime.Now, modelo.descripcion);
+
+            return Redirect("/Home/UsuarioInv#articulo");
+        }
+
+        public ActionResult UsuarioInvDel(int id) {
+            Articulo art = new Articulo();
+            art.EliminarArt(id);
+            return Redirect("/Home/UsuarioInv#articulo");
         }
     }
 }
