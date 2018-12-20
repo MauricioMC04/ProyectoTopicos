@@ -1,4 +1,4 @@
-﻿
+﻿@model ProyectoTopicos.ViewModel.UsuarioInvViewModel
 @{
     ViewBag.Title = "UsuarioInv";
     Layout = "";
@@ -228,30 +228,26 @@ Puede tener las siguientes funcionalidades: artículos bajo custodia y registro 
                     <th scope="col">Categoria</th>
                     <th scope="col">Sub-Categoria</th>
                     <th scope="col">Detalle</th>
+                    <th scope="col">Acciones</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Articulo1</td>
-                    <td>Categoria1</td>
-                    <td>Sub-Categoria1</td>
-                    <td>Detalle1</td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Articulo2</td>
-                    <td>Categoria2</td>
-                    <td>Sub-Categoria2</td>
-                    <td>Detalle2</td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>Articulo3</td>
-                    <td>Categoria3</td>
-                    <td>Sub-Categoria3</td>
-                    <td>Detalle3</td>
-                </tr>
+                @{
+                    
+                    foreach (var art in Model.ListaArticulos) {
+                    <tr>
+                        <th scope="row">@art.codigoArticulo</th>
+                        <td>@art.nombre</td>
+                        <td>@art.categoria</td>
+                        <td>@art.subCategoria</td>
+                        <td>@art.descripcion</td>
+                        <td>
+                            <a  href='@Url.Action("UsuarioInvDel","Home",new { id=art.codigoArticulo })'class="btn btn-warning">Eliminar</a>
+                        </td>
+                    </tr>
+                        
+                    }
+                }
             </tbody>
         </table>
         <br>
@@ -259,37 +255,43 @@ Puede tener las siguientes funcionalidades: artículos bajo custodia y registro 
 
     <!-- Container (Ingresar un reporte de artículo perdido) -->
     <div id="registro" class="container-fluid">
-        <h2>Ingresar un reporte de artículo perdido</h2>
-        <h4>2. Registrar las caracteristicas de un articulo que ha sido extraviado.</h4>
-        <h4>Digite nuevo artículo:</h4>
-        <input type="text" class="form-control" placeholder="Ingrese nuevo artículo" name="nuevoArticulo" id="nuevoArticulo" required>
+        @using (Html.BeginForm("UsuarioInvGuardar", "Home", FormMethod.Post))
+        {
+            <h2>Ingresar un reporte de artículo perdido</h2>
+            <h4>2. Registrar las caracteristicas de un articulo que ha sido extraviado.</h4>
+            <h4>Digite Nombre artículo:</h4>
+            @Html.TextBoxFor(m => m.nombre, new { @class = "form-control", @required = "required" })
 
-        <h4>Digite categoria artículo:</h4>
-        <input type="text" class="form-control" placeholder="Ingrese categoria artículo" name="categoriaArticulo" id="categoriaArticulo" required>
 
-        <h4>Digite sub-categoria artículo:</h4>
-        <input type="text" class="form-control" placeholder="Ingrese sub-categoria artículo" name="sub-categoriaArticulo" id="subcategoriaArticulo" required>
+            <h4>Digite categoria artículo:</h4>
 
-        <h4>Digite detalle artículo:</h4>
-        <input type="text" class="form-control" placeholder="Ingrese detalle artículo" name="detalleArticulo" id="detalleArticulo" required>
+            @Html.DropDownListFor(m => m.categoria, Model.listaCategorias, "Seleccionar", new { @class = "form-control", @required = "required" });
 
-        <h4>Digite fecha actual:</h4>
-        <input type="text" class="form-control" placeholder="Ingrese fecha actual" name="fechaActual" id="fechaActual" required>
-        <br>
+            <h4>Digite sub-categoria artículo:</h4>
 
-        <h4>Digite nombre completo:</h4>
-        <input type="text" class="form-control" placeholder="Ingrese nombre completo" name="nombreCompleto" id="nombreCompleto" required>
+            @Html.DropDownListFor(m => m.subCategoria, Model.listaSubCategorias, "Seleccionar", new { @class = "form-control", @required = "required" });
 
-        <h4>Digite numero de carnet:</h4>
-        <input type="text" class="form-control" placeholder="Ingrese carnet" name="numeroCarnet" id="numeroCarnet" required>
 
-        <h4>Digite numero de telefono:</h4>
-        <input type="text" class="form-control" placeholder="Ingrese telefono" name="numeroTelefono" id="numeroTelefono" required>
+            <h4>Digite detalle artículo:</h4>
+            @Html.TextBoxFor(m => m.descripcion, new { @class = "form-control", @required = "required" })
 
-        <button type="button" class="btn btn-success btn-md">Guardar nuevo artículo</button>
 
-        <br>
-        <br>
+
+            @*<h4>Digite nombre completo:</h4>
+
+            <input type="text" class="form-control" placeholder="Ingrese nombre completo" name="nombreCompleto" id="nombreCompleto" required>
+
+            <h4>Digite numero de carnet:</h4>
+            <input type="text" class="form-control" placeholder="Ingrese carnet" name="numeroCarnet" id="numeroCarnet" required>
+
+            <h4>Digite numero de telefono:</h4>
+            <input type="text" class="form-control" placeholder="Ingrese telefono" name="numeroTelefono" id="numeroTelefono" required>*@
+
+            <br></br>
+
+            <button type="submit" class="btn btn-success btn-md">Guardar nuevo artículo</button>
+        }
+
     </div>
 
     <!-- Container (Contact Section) -->

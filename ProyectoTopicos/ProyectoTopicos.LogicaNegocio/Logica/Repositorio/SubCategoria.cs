@@ -16,7 +16,12 @@ namespace ProyectoTopicos.LogicaNegocio.Logica.Repositorio
 			return resultado[0];
 		}
 
-		public bool AddSubCategoria(string subCategoria)
+        public List<Model.SubCategoriasArticulos> getAll()
+        {
+            return _miContexto.SubCategoriasArticulos.ToList();
+        }
+
+        public bool AddSubCategoria(string subCategoria)
 		{
 			_miContexto.Database.ExecuteSqlCommand("insert into SubCategoriasArticulos values (@codigo, @subCategoria)", new SqlParameter("@codigo", (GetMaxSubCategoria() + 1).ToString()), new SqlParameter("@subCategoria", subCategoria));
 			return true;

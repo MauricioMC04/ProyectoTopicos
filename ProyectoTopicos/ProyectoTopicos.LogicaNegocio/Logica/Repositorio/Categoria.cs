@@ -16,6 +16,11 @@ namespace ProyectoTopicos.LogicaNegocio.Logica.Repositorio
 			return resultado[0];
 		}
 
+        public List<Model.CategoriasArticulos> getAll()
+        {
+            return _miContexto.CategoriasArticulos.ToList();
+        }
+
 		public bool AddCategoria(string categoria)
 		{
 			_miContexto.Database.ExecuteSqlCommand("insert into CategoriasArticulos values (@codigo, @categoria)", new SqlParameter("@codigo", (GetMaxCategoria() + 1).ToString()), new SqlParameter("@categoria", categoria));

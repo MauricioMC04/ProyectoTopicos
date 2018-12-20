@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
-
+using System.Data.Entity;
 namespace ProyectoTopicos.LogicaNegocio.Logica.Repositorio
 {
 	public class Articulo
@@ -49,11 +49,24 @@ namespace ProyectoTopicos.LogicaNegocio.Logica.Repositorio
 
 		public bool AddArticulo(string nombre, DateTime fechaIngreso, string estado, string categoria, string subCategoria, DateTime fechaEntrega, string descripcion)
 		{
-			_miContexto.Database.ExecuteSqlCommand("insert into Articulos values (@codigo, @nombre, @fechaIngreso, @estado, @categoria, @subCategoria, @fechaEntrega, @descripcion)", new SqlParameter("@codigo", (GetMaxArticulo() + 1).ToString()), new SqlParameter("@nombre", nombre), new SqlParameter("@fechaIngreso", fechaIngreso), new SqlParameter("@estado", estado), new SqlParameter("@categoria", categoria), new SqlParameter("@subCategoria", subCategoria), new SqlParameter("@fechaEntrega", fechaEntrega), new SqlParameter("@descripcion", descripcion));
-			return true;
-		}
+            try
+            {
+                _miContexto.Database.ExecuteSqlCommand("insert into Articulos values (@codigo, @nombre, @fechaIngreso, @estado, @categoria, @subCategoria, @fechaEntrega, @descripcion)", new SqlParameter("@codigo", (GetMaxArticulo() + 1).ToString()), new SqlParameter("@nombre", nombre), new SqlParameter("@fechaIngreso", fechaIngreso), new SqlParameter("@estado", estado), new SqlParameter("@categoria", categoria), new SqlParameter("@subCategoria", subCategoria), new SqlParameter("@fechaEntrega", fechaEntrega), new SqlParameter("@descripcion", descripcion));
+               
+            }
+            catch (Exception)
+            {
+            }
+            return true;
 
-		public int GetMaxArticulo()
+        }
+        public List<Model.Articulos> ObtenerTodos()
+        {
+            return _miContexto.Articulos
+             .Include(t => t.CategoriasArticulos)
+             .Include(t=>t.SubCategoriasArticulos).ToList();
+        }
+        public int GetMaxArticulo()
 		{
 			var resultado = _miContexto.Articulos.Max(a => a.codigoArticulo);
 			return Convert.ToInt32(resultado);
@@ -64,5 +77,22 @@ namespace ProyectoTopicos.LogicaNegocio.Logica.Repositorio
 			_miContexto.Database.ExecuteSqlCommand("Update Articulos set estado = @estado where codigoArticulo = @codigo", new SqlParameter("@estado", estado), new SqlParameter("@codigo", codigo));
 			return true;
 		}
-	}
+
+        public void EliminarArt(int id)
+        {
+            try
+            {
+                var art = _miContexto.Articulos.Where(r => r.codigoArticulo == id.ToString()).SingleOrDefault();
+
+                if (art != null)
+                    _miContexto.Articulos.Remove(art);
+                _miContexto.SaveChanges();
+            }
+            catch (Exception)
+            {
+                
+            }
+          
+        }
+    }
 }
