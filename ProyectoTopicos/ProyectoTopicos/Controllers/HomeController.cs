@@ -12,19 +12,29 @@ namespace ProyectoTopicos.Controllers
 {
 	public class HomeController : Controller
 	{
+        private OwinAuth Auth;
+
+        public HomeController()
+        {
+            var cont = new System.Web.HttpContextWrapper(System.Web.HttpContext.Current);
+            Auth = new OwinAuth(cont as HttpContextBase);
+        }
+
+        [Authorize]
 		public ActionResult Index()
 		{
+            
 			return View();
 		}
-
-		public ActionResult About()
+        [Authorize]
+        public ActionResult About()
 		{
 			ViewBag.Message = "Bienvenidos a la Ulatina";
 
 			return View();
 		}
-
-		public ActionResult Contact()
+        [Authorize]
+        public ActionResult Contact()
 		{
 			ViewBag.Message = "Información de Contacto";
 
@@ -32,6 +42,8 @@ namespace ProyectoTopicos.Controllers
 		}
 
         [HttpGet]
+        [AllowAnonymous]
+       
         public ActionResult Login()
         {
             ViewBag.Message = "Inicio de Sesión";
@@ -39,7 +51,15 @@ namespace ProyectoTopicos.Controllers
             return View();
         }
 
+        [AllowAnonymous]
+        public ActionResult LogOut()
+        {
+            Auth.SignOut();
+            return RedirectToAction("Login");
+        }
+
         [HttpPost]
+        [AllowAnonymous]
         public ActionResult Login(LoginInfo modelo)
         {
             if (!ModelState.IsValid)
@@ -47,14 +67,14 @@ namespace ProyectoTopicos.Controllers
                 ViewBag.Mensaje = "El modelo no esta correcto";
                 return View();
             }
-
+            var usuarioRepo = new Usuario();
+            var usuario = usuarioRepo.GetUsuario(modelo.TipoCuenta, modelo.Contrasenna);
             //Validar contrasenna
-            var n = 2;
-            if (n==1) {
+            if (usuario == null) {
                 ViewBag.Mensaje = "Contraseña incorrecta";
-                
                 return View();
             }
+            Auth.SignIn(usuario);
             switch (modelo.TipoCuenta)
             {
                 case "Adm":
@@ -68,6 +88,7 @@ namespace ProyectoTopicos.Controllers
                     return View();
             }
         }
+        [Authorize]
         public ActionResult UsuarioAdm()
         {
             ViewBag.Message = "Usuario Administrador";
@@ -75,6 +96,7 @@ namespace ProyectoTopicos.Controllers
             return View(); 
 
         }
+        [Authorize]
         public ActionResult UsuarioCus()
         {
             ViewBag.Message = "Usuario de Custodia";
@@ -82,7 +104,7 @@ namespace ProyectoTopicos.Controllers
             return View();
 
         }
-
+        [Authorize]
         public ActionResult UsuarioInv()
         {
             Articulo art = new Articulo();
@@ -118,7 +140,7 @@ namespace ProyectoTopicos.Controllers
             return View(viewModel);
 
         }
-
+        [Authorize]
         public ActionResult UsuarioInvGuardar(UsuarioInvViewModel modelo)
         {
             Articulo art = new Articulo();
@@ -126,7 +148,7 @@ namespace ProyectoTopicos.Controllers
 
             return Redirect("/Home/UsuarioInv#articulo");
         }
-
+        [Authorize]
         public ActionResult UsuarioInvDel(int id) {
             Articulo art = new Articulo();
             art.EliminarArt(id);

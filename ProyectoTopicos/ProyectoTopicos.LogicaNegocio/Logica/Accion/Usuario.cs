@@ -16,7 +16,7 @@ namespace ProyectoTopicos.LogicaNegocio.Logica.Accion
 		public Model.Usuarios GetUsuario(string codigo)
 		{
 			var repositorio = new Repositorio.Usuario();
-			return repositorio.GetUsuario(codigo);
-		}
+            return repositorio.GetUsuarioPorCodigo(codigo);
+        }
 	}
 }

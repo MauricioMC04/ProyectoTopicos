@@ -8,7 +8,12 @@ namespace ProyectoTopicos
     {
         public void Configuration(IAppBuilder app)
         {
-            ConfigureAuth(app);
+            app.UseCookieAuthentication(new Microsoft.Owin.Security.Cookies.CookieAuthenticationOptions {
+                AuthenticationType = "ApplicationCookie",
+                LoginPath = new PathString("/Home/Login")
+                }
+            );
+
         }
     }
 }

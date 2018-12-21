@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
+using ProyectoTopicos.Model;
 
 namespace ProyectoTopicos.LogicaNegocio.Logica.Repositorio
 {
@@ -10,10 +11,10 @@ namespace ProyectoTopicos.LogicaNegocio.Logica.Repositorio
 	{
 		Model.TopicosSelectosEntities _miContexto = new Model.TopicosSelectosEntities();
 
-		public Model.Usuarios GetUsuario(string codigo)
+		public Model.Usuarios GetUsuario(string perfil, string pwd)
 		{
-			var resultado = _miContexto.Usuarios.Where(a => a.codigoUsuario.Equals(codigo)).ToList();
-			return resultado[0];
+			return _miContexto.Usuarios.Where(a => a.perfil.Equals(perfil) && a.pwd.Equals(pwd)).FirstOrDefault();
+		
 		}
 
 		public bool AddUsuario(string nombre, string correo, string perfil)
@@ -22,7 +23,12 @@ namespace ProyectoTopicos.LogicaNegocio.Logica.Repositorio
 			return true;
 		}
 
-		public int GetMaxUsuario()
+        internal Usuarios GetUsuarioPorCodigo(string codigo)
+        {
+            return _miContexto.Usuarios.Where(a => a.codigoUsuario.Equals(codigo)).FirstOrDefault();
+        }
+
+        public int GetMaxUsuario()
 		{
 			var resultado = _miContexto.Usuarios.Max(a => a.codigoUsuario);
 			return Convert.ToInt32(resultado);
