@@ -2,13 +2,13 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 12/02/2018 22:16:51
--- Generated from EDMX file: C:\Users\Josue\Documents\U\Topicos Selectos\Proyecto\ProyectoTopicos\ProyectoTopicos\ProyectoTopicos.Model\DataBaseModel.edmx
+-- Date Created: 12/22/2018 00:53:26
+-- Generated from EDMX file: C:\Users\danny\OneDrive\Documentos\projectos\ProyectoTopicos\ProyectoTopicos\ProyectoTopicos.Model\DataBaseModel.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
 GO
-USE [TopicosSelectos];
+USE [Projectos];
 GO
 IF SCHEMA_ID(N'dbo') IS NULL EXECUTE(N'CREATE SCHEMA [dbo]');
 GO
@@ -17,29 +17,35 @@ GO
 -- Dropping existing FOREIGN KEY constraints
 -- --------------------------------------------------
 
-IF OBJECT_ID(N'[dbo].[FK__Articulos__categ__4CA06362]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Articulos] DROP CONSTRAINT [FK__Articulos__categ__4CA06362];
+IF OBJECT_ID(N'[dbo].[FK__Articulos__categ__3B75D760]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Articulos] DROP CONSTRAINT [FK__Articulos__categ__3B75D760];
 GO
-IF OBJECT_ID(N'[dbo].[FK__Articulos__subCa__4D94879B]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Articulos] DROP CONSTRAINT [FK__Articulos__subCa__4D94879B];
+IF OBJECT_ID(N'[dbo].[FK__Articulos__subCa__3C69FB99]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Articulos] DROP CONSTRAINT [FK__Articulos__subCa__3C69FB99];
 GO
-IF OBJECT_ID(N'[dbo].[FK__RegistroD__categ__71D1E811]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[RegistroDePerdidas] DROP CONSTRAINT [FK__RegistroD__categ__71D1E811];
+IF OBJECT_ID(N'[dbo].[FK__RegistroD__categ__4222D4EF]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[RegistroDePerdidas] DROP CONSTRAINT [FK__RegistroD__categ__4222D4EF];
 GO
-IF OBJECT_ID(N'[dbo].[FK__RegistroD__codig__06CD04F7]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[RegistroDevoluciones] DROP CONSTRAINT [FK__RegistroD__codig__06CD04F7];
+IF OBJECT_ID(N'[dbo].[FK__RegistroD__codig__412EB0B6]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[RegistroDePerdidas] DROP CONSTRAINT [FK__RegistroD__codig__412EB0B6];
 GO
-IF OBJECT_ID(N'[dbo].[FK__RegistroD__codig__07C12930]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[RegistroDevoluciones] DROP CONSTRAINT [FK__RegistroD__codig__07C12930];
+IF OBJECT_ID(N'[dbo].[FK__RegistroD__subCa__4316F928]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[RegistroDePerdidas] DROP CONSTRAINT [FK__RegistroD__subCa__4316F928];
 GO
-IF OBJECT_ID(N'[dbo].[FK__RegistroD__codig__70DDC3D8]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[RegistroDePerdidas] DROP CONSTRAINT [FK__RegistroD__codig__70DDC3D8];
+IF OBJECT_ID(N'[dbo].[FK_RegistroDevoluciones_Usuarios]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[RegistroDevoluciones] DROP CONSTRAINT [FK_RegistroDevoluciones_Usuarios];
 GO
-IF OBJECT_ID(N'[dbo].[FK__RegistroD__subCa__72C60C4A]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[RegistroDePerdidas] DROP CONSTRAINT [FK__RegistroD__subCa__72C60C4A];
+IF OBJECT_ID(N'[dbo].[FK_RegistroDevoluciones_Articulos]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[RegistroDevoluciones] DROP CONSTRAINT [FK_RegistroDevoluciones_Articulos];
 GO
 IF OBJECT_ID(N'[dbo].[FK__Usuarios__perfil__6E01572D]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Usuarios] DROP CONSTRAINT [FK__Usuarios__perfil__6E01572D];
+GO
+IF OBJECT_ID(N'[dbo].[FK__RegistroD__codig__07C12930]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[RegistroDevoluciones1Set] DROP CONSTRAINT [FK__RegistroD__codig__07C12930];
+GO
+IF OBJECT_ID(N'[dbo].[FK__RegistroD__codig__06CD04F7]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[RegistroDevoluciones1Set] DROP CONSTRAINT [FK__RegistroD__codig__06CD04F7];
 GO
 
 -- --------------------------------------------------
@@ -52,20 +58,23 @@ GO
 IF OBJECT_ID(N'[dbo].[CategoriasArticulos]', 'U') IS NOT NULL
     DROP TABLE [dbo].[CategoriasArticulos];
 GO
-IF OBJECT_ID(N'[dbo].[Perfiles]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Perfiles];
-GO
 IF OBJECT_ID(N'[dbo].[RegistroDePerdidas]', 'U') IS NOT NULL
     DROP TABLE [dbo].[RegistroDePerdidas];
-GO
-IF OBJECT_ID(N'[dbo].[RegistroDevoluciones]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[RegistroDevoluciones];
 GO
 IF OBJECT_ID(N'[dbo].[SubCategoriasArticulos]', 'U') IS NOT NULL
     DROP TABLE [dbo].[SubCategoriasArticulos];
 GO
 IF OBJECT_ID(N'[dbo].[Usuarios]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Usuarios];
+GO
+IF OBJECT_ID(N'[dbo].[Perfiles]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Perfiles];
+GO
+IF OBJECT_ID(N'[dbo].[RegistroDevoluciones1Set]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[RegistroDevoluciones1Set];
+GO
+IF OBJECT_ID(N'[dbo].[RegistroDevoluciones]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[RegistroDevoluciones];
 GO
 
 -- --------------------------------------------------
@@ -113,7 +122,8 @@ CREATE TABLE [dbo].[Usuarios] (
     [codigoUsuario] varchar(50)  NOT NULL,
     [nombre] varchar(50)  NOT NULL,
     [correo] varchar(50)  NULL,
-    [perfil] varchar(50)  NULL
+    [perfil] varchar(50)  NULL,
+    [pwd] varchar(200)  NULL
 );
 GO
 

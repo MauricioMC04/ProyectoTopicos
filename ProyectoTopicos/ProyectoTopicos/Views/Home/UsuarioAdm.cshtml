@@ -219,7 +219,7 @@ Puede tener las siguientes funcionalidades: usuarios del sistema y parámetros d
     <!-- Container (Usuarios del sistema) -->
     <div id="usuarios" class="container-fluid bg-grey">
         <h2>Usuarios del Sistema</h2>
-        <h4>1. Asignar un determinado perfil a un usuario del sistema:</h4>
+        <h4>1. Asignar o desasignar un determinado perfil a un usuario del sistema:</h4>
         @*<table></table>*@
         @*<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<IEnumerable<MvcApplication1.Models.Movie>>" %>*@
 
@@ -243,28 +243,51 @@ Puede tener las siguientes funcionalidades: usuarios del sistema y parámetros d
                 <tr>
                     <th scope="col">ID</th>
                     <th scope="col">Usuario</th>
-                    <th scope="col">Perfil</th>
+                    <th scope="col">Perfil actual</th>
+                    <th scope="col">Perfil a reasignar</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Usuario1</td>
-                    <td>Perfil1</td>
-                    @*<td>@mdo</td>*@
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Usuario2</td>
-                    <td>Perfil2</td>
-                    @*<td>@fat</td>*@
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>Usuario3</td>
-                    <td>Perfil3</td>
-                    @*<td>@twitter</td>*@
-                </tr>
+
+                @{
+
+                    foreach (var usr in Model.ListaUsuarios)
+                    {
+                        @model ProyectoTopicos.ViewModel.UsuarioAdmViewModel
+                        using (Html.BeginForm("UsuarioAdmReasignar", "Home", FormMethod.Post))
+                        {
+                            <tr>
+                                <th scope="row">@usr.idUsuario</th>
+                                <td>@usr.nombreUsuario</td>
+                                <td>@usr.perfilUsuario</td>
+                                <td>
+                                    @Html.Hidden("codigoUsuario",  usr.idUsuario )
+                                    @Html.DropDownListFor(u => u.codigoPerfil, Model.ListaPerfiles, "Seleccionar", new { @class = "form-control", @required = "required" })
+                                </td>
+                                <td>
+                                    <button type="submit" class="btn btn-success btn-md">Reasignar perfil</button>
+                                    @*<a href='@Url.Action("UsuarioAdmReasignarPerfilComoInv", "Home", new { codigoUsuario = usr.idUsuario, codigoPerfil = usr.idPerfil })' class="btn btn-warning">Reasignar perfil</a>*@
+                                </td>
+                            </tr>
+                        }
+                    }
+                }
+                @*<tr>
+            <th scope="row">1</th>
+            <td>Usuario1</td>
+            <td>Perfil1</td>
+            @*<td>@mdo</td>
+        </tr>
+        <tr>
+            <th scope="row">2</th>
+            <td>Usuario2</td>
+            <td>Perfil2</td>
+        </tr>
+        <tr>
+            <th scope="row">3</th>
+            <td>Usuario3</td>
+            <td>Perfil3</td>
+        </tr>*@
             </tbody>
         </table>
 
@@ -294,37 +317,7 @@ Puede tener las siguientes funcionalidades: usuarios del sistema y parámetros d
 
 
         </br>
-        <h4>2. Desasignar un determinado perfil a un usuario del sistema:</h4>
-
-        <table class="table">
-            <thead class="thead-dark">
-                <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Usuario</th>
-                    <th scope="col">Perfil</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Usuario1</td>
-                    <td>Perfil1</td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Usuario2</td>
-                    <td>Perfil2</td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>Usuario3</td>
-                    <td>Perfil3</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <br>
-    </div>
+        
 
     <!-- Container (Parámetros del sistema) -->
     <div id="parametros" class="container-fluid">

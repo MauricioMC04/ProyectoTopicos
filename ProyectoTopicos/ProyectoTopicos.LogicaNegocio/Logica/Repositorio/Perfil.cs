@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
+using ProyectoTopicos.Model;
 
 namespace ProyectoTopicos.LogicaNegocio.Logica.Repositorio
 {
@@ -21,5 +22,10 @@ namespace ProyectoTopicos.LogicaNegocio.Logica.Repositorio
 			var resultado = _miContexto.Perfiles.Max(a => a.codigoPerfil);
 			return Convert.ToInt32(resultado);
 		}
+
+        public List<Perfiles> GetAll()
+        {
+            return _miContexto.Perfiles.ToList();
+        }
 	}
 }

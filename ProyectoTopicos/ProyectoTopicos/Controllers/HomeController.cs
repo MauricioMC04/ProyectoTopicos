@@ -7,6 +7,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using ProyectoTopicos.LogicaNegocio.Logica.Repositorio;
+using ProyectoTopicos.Dtos;
 
 namespace ProyectoTopicos.Controllers
 {
@@ -88,14 +89,7 @@ namespace ProyectoTopicos.Controllers
                     return View();
             }
         }
-        [Authorize]
-        public ActionResult UsuarioAdm()
-        {
-            ViewBag.Message = "Usuario Administrador";
-
-            return View(); 
-
-        }
+       
         [Authorize]
         public ActionResult UsuarioCus()
         {
@@ -117,7 +111,8 @@ namespace ProyectoTopicos.Controllers
 
             var viewModel = new UsuarioInvViewModel
             {
-                ListaArticulos = lista.Select(r => new ArticulosDTO {
+                ListaArticulos = lista.Select(r => new ArticulosDTO
+                {
                     categoria = r.CategoriasArticulos.categoria,
                     codigoArticulo = r.codigoArticulo,
                     descripcion = r.descripcion,
@@ -126,11 +121,13 @@ namespace ProyectoTopicos.Controllers
 
                 }).ToList()
                 ,
-                listaCategorias = listaCategorias.Select(r => new SelectListItem {
+                listaCategorias = listaCategorias.Select(r => new SelectListItem
+                {
                     Text = r.categoria,
                     Value = r.codigoCategoria
                 }).ToList(),
-                listaSubCategorias = listaSub.Select(r => new SelectListItem {
+                listaSubCategorias = listaSub.Select(r => new SelectListItem
+                {
                     Text = r.subCategoria,
                     Value = r.codigoSubCategoria
                 }).ToList()
@@ -140,6 +137,40 @@ namespace ProyectoTopicos.Controllers
             return View(viewModel);
 
         }
+
+        [Authorize]
+        public ActionResult UsuarioAdm()
+        {
+            
+            var usuarios = new Usuario();
+            var perfiles = new Perfil();
+
+            var listaUsuarios = usuarios.GetAll();
+            var listaPerfiles = perfiles.GetAll();
+
+
+            var viewModel = new UsuarioAdmViewModel
+            {
+                ListaUsuarios = listaUsuarios.Select(r => new UsuarioDTO
+                {
+                    idUsuario = r.codigoUsuario,
+                    nombreUsuario = r.nombre,
+                    perfilUsuario = r.Perfiles.perfil,
+                    idPerfil = r.Perfiles.codigoPerfil
+
+                }).ToList()
+                ,
+                ListaPerfiles= listaPerfiles.Select(r => new SelectListItem
+                {
+                    Text = r.perfil,
+                    Value = r.codigoPerfil
+                }).ToList(),
+            };
+            ViewBag.Message = "Usuario Administrador";
+
+            return View(viewModel);
+        }
+
         [Authorize]
         public ActionResult UsuarioInvGuardar(UsuarioInvViewModel modelo)
         {
@@ -153,6 +184,23 @@ namespace ProyectoTopicos.Controllers
             Articulo art = new Articulo();
             art.EliminarArt(id);
             return Redirect("/Home/UsuarioInv#articulo");
+        }
+
+        [Authorize]
+        public ActionResult UsuarioAdmReasignarPerfilComoInv(string codigoUsuario, string codigoPerfil)
+        {
+            Usuario u = new Usuario();
+            u.ReasignarPerfilDeUsuario(codigoUsuario, codigoPerfil);
+            return Redirect("/Home/UsuarioAdm");
+        }
+
+        [Authorize]
+        public ActionResult UsuarioAdmReasignar(UsuarioAdmViewModel modelo)
+        {
+            Usuario u = new Usuario();
+            
+            u.ReasignarPerfilDeUsuario(modelo.codigoUsuario, modelo.codigoPerfil);
+            return Redirect("/Home/UsuarioAdm");
         }
     }
 }
