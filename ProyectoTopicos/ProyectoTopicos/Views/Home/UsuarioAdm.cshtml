@@ -218,7 +218,7 @@ Puede tener las siguientes funcionalidades: usuarios del sistema y parámetros d
 
     <!-- Container (Usuarios del sistema) -->
     <div id="usuarios" class="container-fluid bg-grey">
-        <h2>Usuarios del Sistema</h2>
+        <h2>Usuarios y parametros del Sistema</h2>
         <h4>1. Asignar o desasignar un determinado perfil a un usuario del sistema:</h4>
         @*<table></table>*@
         @*<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<IEnumerable<MvcApplication1.Models.Movie>>" %>*@
@@ -261,7 +261,7 @@ Puede tener las siguientes funcionalidades: usuarios del sistema y parámetros d
                                 <td>@usr.nombreUsuario</td>
                                 <td>@usr.perfilUsuario</td>
                                 <td>
-                                    @Html.Hidden("codigoUsuario",  usr.idUsuario )
+                                    @Html.Hidden("codigoUsuario", usr.idUsuario)
                                     @Html.DropDownListFor(u => u.codigoPerfil, Model.ListaPerfiles, "Seleccionar", new { @class = "form-control", @required = "required" })
                                 </td>
                                 <td>
@@ -273,21 +273,21 @@ Puede tener las siguientes funcionalidades: usuarios del sistema y parámetros d
                     }
                 }
                 @*<tr>
-            <th scope="row">1</th>
-            <td>Usuario1</td>
-            <td>Perfil1</td>
-            @*<td>@mdo</td>
-        </tr>
-        <tr>
-            <th scope="row">2</th>
-            <td>Usuario2</td>
-            <td>Perfil2</td>
-        </tr>
-        <tr>
-            <th scope="row">3</th>
-            <td>Usuario3</td>
-            <td>Perfil3</td>
-        </tr>*@
+                    <th scope="row">1</th>
+                    <td>Usuario1</td>
+                    <td>Perfil1</td>
+                    @*<td>@mdo</td>
+                </tr>
+                <tr>
+                    <th scope="row">2</th>
+                    <td>Usuario2</td>
+                    <td>Perfil2</td>
+                </tr>
+                <tr>
+                    <th scope="row">3</th>
+                    <td>Usuario3</td>
+                    <td>Perfil3</td>
+                </tr>*@
             </tbody>
         </table>
 
@@ -317,47 +317,63 @@ Puede tener las siguientes funcionalidades: usuarios del sistema y parámetros d
 
 
         </br>
-        
 
-    <!-- Container (Parámetros del sistema) -->
+
+
         <div id="parametros" class="container-fluid">
-            <h2>Parámetros del sistema</h2>
-            <h4>1. Consultar o modificar un determinado parámetro del sistema.</h4>
-            @*<table class="table">
-        <thead class="thead-dark">
-            <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Parámetro del Sistema</th>
-            </tr>
-        </thead>
-        <tbody>*@
 
-            @*Hace falta...*@
+
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+            <!-- Container (Parámetros del sistema) -->
+            @*<div id="parametros" class="container-fluid">*@
+            @*<h2>Parámetros del sistema</h2>*@
+            @*<h4>2. Consultar o modificar un determinado parámetro del sistema.</h4>*@
+            @*<table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Parámetro del Sistema</th>
+                </tr>
+            </thead>
+            <tbody>*@
+
+            <!-- Hace falta...-->
             @*@{
 
-            foreach (var par in Model.Parametros)
-            {
-                @model ProyectoTopicos.ViewModel.ParametroViewModel
-                using (Html.BeginForm("ParametroEditar", "Home", FormMethod.Post))
+                foreach (var par in Model.Parametros)
                 {
-                    <tr>
-                        <th scope="row">@par.idParametro</th>
-                        <td> @Html.TextBoxFor(m => m.valor, new { @class = "form-control", @required = "required" })</td>
+                    @model ProyectoTopicos.ViewModel.ParametroViewModel
+                    using (Html.BeginForm("ParametroEditar", "Home", FormMethod.Post))
+                    {
+                        <tr>
+                            <th scope="row">@par.idParametro</th>
+                            <td> @Html.TextBoxFor(m => m.valor, new { @class = "form-control", @required = "required" })</td>
 
-                        <td>
-                            @Html.Hidden("idParametro", par.idParametro)
+                            <td>
+                                @Html.Hidden("idParametro", par.idParametro)
 
-                         <button type="submit" class="btn btn-success btn-md"> editar</button>
+                             <button type="submit" class="btn btn-success btn-md"> editar</button>
 
-                        </td>
-                    </tr>
+                            </td>
+                        </tr>
+                    }
                 }
-            }
-        }*@
+            }*@
 
 
 
-            @*<h4>2. Modificar un determinado parámetro del sistema.</h4>*@
+            @*<h4>2. Modificar un determinado parámetro del sistema.</h4>
             <table class="table">
                 <thead class="thead-dark">
                     <tr>
@@ -379,9 +395,9 @@ Puede tener las siguientes funcionalidades: usuarios del sistema y parámetros d
                         <td>Parámetro3</td>
                     </tr>
                 </tbody>
-            </table>
+            </table>*@
 
-            <h4>3. Consultar  o modificar elementos de la lista del sistema.</h4>
+            @*<h4>3. Consultar elementos de la lista del sistema.</h4>
             <table class="table">
                 <thead class="thead-dark">
                     <tr>
@@ -411,42 +427,10 @@ Puede tener las siguientes funcionalidades: usuarios del sistema y parámetros d
                         <td>Sub-Categoria3</td>
                     </tr>
                 </tbody>
-            </table>
+            </table>*@
 
             @*<h4>4. Modificar elementos de la de lista sistema.</h4>
-        <table class="table">
-            <thead class="thead-dark">
-                <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Elemento</th>
-                    <th scope="col">Categoria</th>
-                    <th scope="col">Sub-Categoria</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Elemento1</td>
-                    <td>Categoria1</td>
-                    <td>Sub-Categoria1</td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Elemento2</td>
-                    <td>Categoria2</td>
-                    <td>Sub-Categoria2</td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>Elemento3</td>
-                    <td>Categoria3</td>
-                    <td>Sub-Categoria3</td>
-                </tr>
-            </tbody>
-        </table>*@
-
-            <h4>5. Agregar nuevos elementos de la de lista sistema.</h4>
-            @*<table class="table">
+            <table class="table">
                 <thead class="thead-dark">
                     <tr>
                         <th scope="col">ID</th>
@@ -475,37 +459,43 @@ Puede tener las siguientes funcionalidades: usuarios del sistema y parámetros d
                         <td>Sub-Categoria3</td>
                     </tr>
                 </tbody>
-            </table>
-        </div>*@
+            </table>*@
 
-
-            <br>
-            <input type="text" class="form-control" placeholder="Ingrese nuevo elemento a la lista" name="nuevoElemento" id="nuevoElemento" required>
-
-            <h4>Digite la categoria:</h4>
-            <input type="text" class="form-control" placeholder="Ingrese categoria artículo" name="categoriaArticulo" id="categoriaArticulo" required>
-
-            <h4>Digite la sub-categoria:</h4>
-            <input type="text" class="form-control" placeholder="Ingrese sub-categoria artículo" name="sub-categoriaArticulo" id="subcategoriaArticulo" required>
-
-            @*<h4>Digite detalle artículo:</h4>
-            <input type="text" class="form-control" placeholder="Ingrese detalle artículo" name="detalleArticulo" id="detalleArticulo" required>*@
-
-            <br>
-
-            <button type="button" class="btn btn-success btn-md">Guardar nuevo artículo</button>
-
-            <br>
-            <br>
-
-
-
-
-
-
+            @*<h4>5. Agregar nuevos elementos de la de lista sistema.</h4>
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Elemento</th>
+                            <th scope="col">Categoria</th>
+                            <th scope="col">Sub-Categoria</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>Elemento1</td>
+                            <td>Categoria1</td>
+                            <td>Sub-Categoria1</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>Elemento2</td>
+                            <td>Categoria2</td>
+                            <td>Sub-Categoria2</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">3</th>
+                            <td>Elemento3</td>
+                            <td>Categoria3</td>
+                            <td>Sub-Categoria3</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>*@
 
             <!-- Container (Contact Section) -->
-            <div id="contact" class="container-fluid bg-grey">
+            @*<div id="contact" class="container-fluid bg-grey">
                 <h2 class="text-center">CONTACTO</h2></br>
                 <div class="row">
                     <div class="col-sm-5">
@@ -531,21 +521,21 @@ Puede tener las siguientes funcionalidades: usuarios del sistema y parámetros d
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>*@
 
-            <div class="container body-content">
+            @*<div class="container body-content">
 
                 <hr />
                 <footer>
                     <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
                 </footer>
-            </div>
+            </div>*@
 
-            <footer class="container-fluid text-center">
+            @*<footer class="container-fluid text-center">
                 <a href="#myPage" title="To Top">
                     <span class="glyphicon glyphicon-chevron-up"></span>
                 </a>
-            </footer>
+            </footer>*@
 
             <script>
                 $(document).ready(function () {
