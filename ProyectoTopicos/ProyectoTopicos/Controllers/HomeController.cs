@@ -202,5 +202,15 @@ namespace ProyectoTopicos.Controllers
             u.ReasignarPerfilDeUsuario(modelo.codigoUsuario, modelo.codigoPerfil);
             return Redirect("/Home/UsuarioAdm");
         }
+
+        // Hace falta...
+    //    [Authorize]
+    //    public ActionResult ParametroEditar(ParametroAdmViewModel modelo)
+    //    {
+    //        Parametro p = new Parametro();
+
+    //        p.editarValor(modelo.idParametro, modelo.valor);
+    //        return Redirect("/Home/UsuarioAdm");
+    //    }
     }
 }

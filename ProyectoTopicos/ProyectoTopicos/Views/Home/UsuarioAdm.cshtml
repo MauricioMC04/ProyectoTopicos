@@ -320,222 +320,259 @@ Puede tener las siguientes funcionalidades: usuarios del sistema y parámetros d
         
 
     <!-- Container (Parámetros del sistema) -->
-    <div id="parametros" class="container-fluid">
-        <h2>Parámetros del sistema</h2>
-        <h4>1. Consultar un determinado parámetro del sistema.</h4>
-        <table class="table">
-            <thead class="thead-dark">
-                <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Parámetro del Sistema</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Parámetro1</td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Parámetro2</td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>Parámetro3</td>
-                </tr>
-            </tbody>
-        </table>
+        <div id="parametros" class="container-fluid">
+            <h2>Parámetros del sistema</h2>
+            <h4>1. Consultar o modificar un determinado parámetro del sistema.</h4>
+            @*<table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Parámetro del Sistema</th>
+            </tr>
+        </thead>
+        <tbody>*@
 
-        <h4>2. Modificar un determinado parámetro del sistema.</h4>
-        <table class="table">
-            <thead class="thead-dark">
-                <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Parámetro del Sistema</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Parámetro1</td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Parámetro2</td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>Parámetro3</td>
-                </tr>
-            </tbody>
-        </table>
+            @*Hace falta...*@
+            @*@{
 
-        <h4>3. Consultar elementos de la lista del sistema.</h4>
-        <table class="table">
-            <thead class="thead-dark">
-                <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Elemento</th>
-                    <th scope="col">Categoria</th>
-                    <th scope="col">Sub-Categoria</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Elemento1</td>
-                    <td>Categoria1</td>
-                    <td>Sub-Categoria1</td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Elemento2</td>
-                    <td>Categoria2</td>
-                    <td>Sub-Categoria2</td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>Elemento3</td>
-                    <td>Categoria3</td>
-                    <td>Sub-Categoria3</td>
-                </tr>
-            </tbody>
-        </table>
+            foreach (var par in Model.Parametros)
+            {
+                @model ProyectoTopicos.ViewModel.ParametroViewModel
+                using (Html.BeginForm("ParametroEditar", "Home", FormMethod.Post))
+                {
+                    <tr>
+                        <th scope="row">@par.idParametro</th>
+                        <td> @Html.TextBoxFor(m => m.valor, new { @class = "form-control", @required = "required" })</td>
 
-        <h4>4. Modificar elementos de la de lista sistema.</h4>
-        <table class="table">
-            <thead class="thead-dark">
-                <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Elemento</th>
-                    <th scope="col">Categoria</th>
-                    <th scope="col">Sub-Categoria</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Elemento1</td>
-                    <td>Categoria1</td>
-                    <td>Sub-Categoria1</td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Elemento2</td>
-                    <td>Categoria2</td>
-                    <td>Sub-Categoria2</td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>Elemento3</td>
-                    <td>Categoria3</td>
-                    <td>Sub-Categoria3</td>
-                </tr>
-            </tbody>
-        </table>
+                        <td>
+                            @Html.Hidden("idParametro", par.idParametro)
 
-        <h4>5. Agregar nuevos elementos de la de lista sistema.</h4>
-        <table class="table">
-            <thead class="thead-dark">
-                <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Elemento</th>
-                    <th scope="col">Categoria</th>
-                    <th scope="col">Sub-Categoria</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Elemento1</td>
-                    <td>Categoria1</td>
-                    <td>Sub-Categoria1</td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Elemento2</td>
-                    <td>Categoria2</td>
-                    <td>Sub-Categoria2</td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>Elemento3</td>
-                    <td>Categoria3</td>
-                    <td>Sub-Categoria3</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+                         <button type="submit" class="btn btn-success btn-md"> editar</button>
 
-    <!-- Container (Contact Section) -->
-    <div id="contact" class="container-fluid bg-grey">
-        <h2 class="text-center">CONTACTO</h2></br>
-        <div class="row">
-            <div class="col-sm-5">
-                <p>Nos pondremos en contacto con usted lo más pronto posible.</p>
-                <p><span class="glyphicon glyphicon-map-marker"></span> San José, Costa Rica</p>
-                <p><span class="glyphicon glyphicon-phone"></span> +506 7104 9891</p>
-                <p><span class="glyphicon glyphicon-envelope"></span> danny.columna@ulatina.net</p>
-            </div>
-            <div class="col-sm-7 slideanim">
-                <div class="row">
-                    <div class="col-sm-6 form-group">
-                        <input class="form-control" id="name" name="name" placeholder="Nombre Completo" type="text" required>
-                    </div>
-                    <div class="col-sm-6 form-group">
-                        <input class="form-control" id="email" name="email" placeholder="Correo Electrónico" type="email" required>
-                    </div>
-                </div>
-                <textarea class="form-control" id="comments" name="comments" placeholder="Comentario" rows="5"></textarea><br>
-                <div class="row">
-                    <div class="col-sm-12 form-group">
-                        <button class="btn btn-default pull-right" type="submit">Enviar</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="container body-content">
-        
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
-    </div>
-
-    <footer class="container-fluid text-center">
-        <a href="#myPage" title="To Top">
-            <span class="glyphicon glyphicon-chevron-up"></span>
-        </a>
-    </footer>
-
-    <script>
-        $(document).ready(function () {
-            $(".navbar a, footer a[href='#myPage']").on('click', function (event) {
-                if (this.hash !== "") {
-                    event.preventDefault();
-                    var hash = this.hash;
-                    $('html, body').animate({
-                        scrollTop: $(hash).offset().top
-                    }, 900, function () {
-                        window.location.hash = hash;
-                    });
+                        </td>
+                    </tr>
                 }
-            });
+            }
+        }*@
 
-            $(window).scroll(function () {
-                $(".slideanim").each(function () {
-                    var pos = $(this).offset().top;
 
-                    var winTop = $(window).scrollTop();
-                    if (pos < winTop + 600) {
-                        $(this).addClass("slide");
-                    }
-                });
-            });
-        })
-    </script>
+
+            @*<h4>2. Modificar un determinado parámetro del sistema.</h4>*@
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Parámetro del Sistema</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Parámetro1</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">2</th>
+                        <td>Parámetro2</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">3</th>
+                        <td>Parámetro3</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h4>3. Consultar  o modificar elementos de la lista del sistema.</h4>
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Elemento</th>
+                        <th scope="col">Categoria</th>
+                        <th scope="col">Sub-Categoria</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Elemento1</td>
+                        <td>Categoria1</td>
+                        <td>Sub-Categoria1</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">2</th>
+                        <td>Elemento2</td>
+                        <td>Categoria2</td>
+                        <td>Sub-Categoria2</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">3</th>
+                        <td>Elemento3</td>
+                        <td>Categoria3</td>
+                        <td>Sub-Categoria3</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            @*<h4>4. Modificar elementos de la de lista sistema.</h4>
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Elemento</th>
+                    <th scope="col">Categoria</th>
+                    <th scope="col">Sub-Categoria</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Elemento1</td>
+                    <td>Categoria1</td>
+                    <td>Sub-Categoria1</td>
+                </tr>
+                <tr>
+                    <th scope="row">2</th>
+                    <td>Elemento2</td>
+                    <td>Categoria2</td>
+                    <td>Sub-Categoria2</td>
+                </tr>
+                <tr>
+                    <th scope="row">3</th>
+                    <td>Elemento3</td>
+                    <td>Categoria3</td>
+                    <td>Sub-Categoria3</td>
+                </tr>
+            </tbody>
+        </table>*@
+
+            <h4>5. Agregar nuevos elementos de la de lista sistema.</h4>
+            @*<table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Elemento</th>
+                        <th scope="col">Categoria</th>
+                        <th scope="col">Sub-Categoria</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Elemento1</td>
+                        <td>Categoria1</td>
+                        <td>Sub-Categoria1</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">2</th>
+                        <td>Elemento2</td>
+                        <td>Categoria2</td>
+                        <td>Sub-Categoria2</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">3</th>
+                        <td>Elemento3</td>
+                        <td>Categoria3</td>
+                        <td>Sub-Categoria3</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>*@
+
+
+            <br>
+            <input type="text" class="form-control" placeholder="Ingrese nuevo elemento a la lista" name="nuevoElemento" id="nuevoElemento" required>
+
+            <h4>Digite la categoria:</h4>
+            <input type="text" class="form-control" placeholder="Ingrese categoria artículo" name="categoriaArticulo" id="categoriaArticulo" required>
+
+            <h4>Digite la sub-categoria:</h4>
+            <input type="text" class="form-control" placeholder="Ingrese sub-categoria artículo" name="sub-categoriaArticulo" id="subcategoriaArticulo" required>
+
+            @*<h4>Digite detalle artículo:</h4>
+            <input type="text" class="form-control" placeholder="Ingrese detalle artículo" name="detalleArticulo" id="detalleArticulo" required>*@
+
+            <br>
+
+            <button type="button" class="btn btn-success btn-md">Guardar nuevo artículo</button>
+
+            <br>
+            <br>
+
+
+
+
+
+
+
+            <!-- Container (Contact Section) -->
+            <div id="contact" class="container-fluid bg-grey">
+                <h2 class="text-center">CONTACTO</h2></br>
+                <div class="row">
+                    <div class="col-sm-5">
+                        <p>Nos pondremos en contacto con usted lo más pronto posible.</p>
+                        <p><span class="glyphicon glyphicon-map-marker"></span> San José, Costa Rica</p>
+                        <p><span class="glyphicon glyphicon-phone"></span> +506 7104 9891</p>
+                        <p><span class="glyphicon glyphicon-envelope"></span> danny.columna@ulatina.net</p>
+                    </div>
+                    <div class="col-sm-7 slideanim">
+                        <div class="row">
+                            <div class="col-sm-6 form-group">
+                                <input class="form-control" id="name" name="name" placeholder="Nombre Completo" type="text" required>
+                            </div>
+                            <div class="col-sm-6 form-group">
+                                <input class="form-control" id="email" name="email" placeholder="Correo Electrónico" type="email" required>
+                            </div>
+                        </div>
+                        <textarea class="form-control" id="comments" name="comments" placeholder="Comentario" rows="5"></textarea><br>
+                        <div class="row">
+                            <div class="col-sm-12 form-group">
+                                <button class="btn btn-default pull-right" type="submit">Enviar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container body-content">
+
+                <hr />
+                <footer>
+                    <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+                </footer>
+            </div>
+
+            <footer class="container-fluid text-center">
+                <a href="#myPage" title="To Top">
+                    <span class="glyphicon glyphicon-chevron-up"></span>
+                </a>
+            </footer>
+
+            <script>
+                $(document).ready(function () {
+                    $(".navbar a, footer a[href='#myPage']").on('click', function (event) {
+                        if (this.hash !== "") {
+                            event.preventDefault();
+                            var hash = this.hash;
+                            $('html, body').animate({
+                                scrollTop: $(hash).offset().top
+                            }, 900, function () {
+                                window.location.hash = hash;
+                            });
+                        }
+                    });
+
+                    $(window).scroll(function () {
+                        $(".slideanim").each(function () {
+                            var pos = $(this).offset().top;
+
+                            var winTop = $(window).scrollTop();
+                            if (pos < winTop + 600) {
+                                $(this).addClass("slide");
+                            }
+                        });
+                    });
+                })
+            </script>
 
 </body>
 </html>

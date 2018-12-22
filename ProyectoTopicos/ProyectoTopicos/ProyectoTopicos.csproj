@@ -199,6 +199,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Dtos\ParametroDTO.cs" />
     <Compile Include="Dtos\UsuarioDTO.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -210,6 +211,7 @@
     <Compile Include="Models\OwinAuth.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModel\ParametroAdmViewModel.cs" />
     <Compile Include="ViewModel\UsuarioAdmViewModel.cs" />
     <Compile Include="ViewModel\UsuarioInvViewModel.cs" />
   </ItemGroup>

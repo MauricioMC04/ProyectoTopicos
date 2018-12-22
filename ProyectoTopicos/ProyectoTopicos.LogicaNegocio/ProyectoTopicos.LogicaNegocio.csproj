@@ -101,6 +101,7 @@
     <Compile Include="Logica\Especificacion\Usuario.cs" />
     <Compile Include="Logica\Repositorio\Articulo.cs" />
     <Compile Include="Logica\Repositorio\Categoria.cs" />
+    <Compile Include="Logica\Repositorio\Parametro.cs" />
     <Compile Include="Logica\Repositorio\Perfil.cs" />
     <Compile Include="Logica\Repositorio\RegistroDePerdidas.cs" />
     <Compile Include="Logica\Repositorio\RegistroDevolucion.cs" />
